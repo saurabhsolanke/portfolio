@@ -1,23 +1,27 @@
 export default function Projects() {
     return (
         <div>
-            <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-                <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-6 w-6 flex-none">
-                        hi
-                    </svg>
-                    <span class="ml-3">Work</span>
-                </h2>
-                <ol class="mt-6 space-y-4 flex flex-col lg:flex-row lg:space-y-0 lg:space-x-4">
-                    hi    </ol>
-                <a class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group mt-6 w-full" href="#">
-                    Download CV
-                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50">
-                        hi
-                    </svg>
-                </a>
+            <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+                <h3 className="text-lg font-semibold border-black bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-gray-700 mb-2">Work experience</h3>
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+                        <p className="font-semibold border-black bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-gray-700">Associate Software Engineer Inteliment, Aug 2022 - Present</p>
+                        <p className="text-gray-500 md:w-2/3 h-fit">Designing end-to-end experience for financial products on mobile & web platforms. Working closely with managers, marketing specialists and developers.</p>
+                        <ul className="text-gray-500 md:w-2/3 h-fit list-disc mt-2">
+                            <li>Designed and developed large-scale data driven web applications</li>
+                            <li>Accomplished seamless integrations with backend services using Angular, ensuring efficient communication between the frontend and backend components</li>
+                            <li>Leveraged HTTP APIs to retrieve and send data, implementing robust data exchange mechanisms</li>
+                            <li>Collaborated closely with backend developers to define API endpoints and data structures, ensuring accurate data flow and consistency</li>
+                            <li>Proficiently managed code repositories on GitHub to ensure version control, collaboration, and codebase integrity</li>
+                            <li>Regularly committed code changes, updates, and enhancements to maintain a well-documented history of the project's evolution.</li>
+                        </ul>
+                    </div>
+                    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+                        <p className="font-semibold border-black bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-gray-700">Trainee</p>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
-

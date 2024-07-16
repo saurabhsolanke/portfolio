@@ -1,15 +1,41 @@
+'use client';
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Techstacks from "./components/Techstacks";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
+import React, { useState, useEffect } from "react";
+
 export default function Home() {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', newTheme);
+  };
+
   return (
-    <div className="bg-white h-full">
-      <main className="flex flex-col min-h-screen container bg-white-100">
+    <div className={`${theme}`}>
+      <main className="flex flex-col min-h-screen container dark:bg-slate-800 bg-white-100">
         <div className="w-full h-full flex justify-center">
-          <Navbar></Navbar>
+          <Navbar toggleTheme={toggleTheme} theme={theme}></Navbar>
         </div>
         <section className="h-full bg-white-700 p-2">
           <Landing></Landing>
@@ -17,8 +43,7 @@ export default function Home() {
         <section className="h-full bg-white-500 p-2">
           <Techstacks></Techstacks>
         </section>
-        <section className="h-full bg-red-300 p-2">
-          c Projects
+        <section className="h-full bg-white-300 p-2">
           <Projects></Projects>
         </section>
          <section className="h-full bg-red-200 p-2">

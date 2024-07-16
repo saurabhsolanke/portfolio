@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Landing() {
   return (
     <>
-      <main className="w-full h-full">
+      <main className="w-full  h-full">
         <div className="grid grid-cols-1 gap-8 h-fit px-9">
           <div className="col-span-1 flex flex-col">
             <Image
