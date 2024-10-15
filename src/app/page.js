@@ -33,11 +33,11 @@ export default function Home() {
 
   return (
     <div className={`${theme}`}>
-      <main className="flex flex-col min-h-screen container dark:bg-slate-800 bg-white-100">
+      <main className="flex flex-col min-h-screen container bg-white">
         <div className="w-full h-full flex justify-center">
-          <Navbar toggleTheme={toggleTheme} theme={theme}></Navbar>
+          {/* <Navbar toggleTheme={toggleTheme} theme={theme}></Navbar> */}
         </div>
-        <section className="h-full bg-white-700 p-2">
+        <section className="h-full bg-white-700 mt-5 p-2">
           <Landing></Landing>
         </section>
         <section className="h-full bg-white-500 p-2">
@@ -46,7 +46,7 @@ export default function Home() {
         <section className="h-full bg-white-300 p-2">
           <Projects></Projects>
         </section>
-         <section className="h-full bg-red-200 p-2">
+         <section className="h-full bg-black-200 p-2">
           <Footer></Footer>
          </section>
       </main>
