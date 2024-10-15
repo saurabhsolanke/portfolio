@@ -1,7 +1,9 @@
 export default function Techstacks() {
     return (
         <div>
-            <h1 className="text-3xl py-5 border-black font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-gray-700">Techstacks</h1>
+            <div className="grid grid-cols-1 gap-8 h-fit px-9">
+                <h1 className="text-3xl py-5 border-black font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-gray-700">Techstacks</h1>
+            </div>
             <marquee behavior="scroll" direction="left" scrollamount="5">
                 <div style={{ display: 'inline-block', marginRight: '10px' }}>
                     <img src="/images/angular.svg" alt="angular" className="h-15 w-60" />
