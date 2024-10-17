@@ -14,10 +14,10 @@ export default function Landing() {
               className="rounded-full h-auto object-cover w-48"
             />
             <h1 className="text-center text-5xl py-5 border-black font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-gray-700">
-              Software Engineer
+              Saurabh Solanke
             </h1>
             <p className="my-4 text-gray-500 md:w-2/3 h-fit">
-            I am Saurabh Solanke, a Software Engineer with 2.5+ years of experience, skilled in HTML, CSS, Bootstrap, Javascript, Typescript, Angular, ReactJs, and version control tools like Git/GitLab, with exposure to Django and Figma. I have worked on both projects and products, focusing on building responsive web applications and ensuring smooth collaboration through efficient code management.
+            I am Saurabh Solanke, a Software Engineer with 2.5+ years of experience, skilled in Javascript, Typescript, Angular, ReactJs, and version control tools like Git/GitLab, with exposure to Django and Figma. I have worked on both projects and products, focusing on building responsive web applications and ensuring smooth collaboration through efficient code management.
             </p>
             <div className="flex gap-4 text-black py-4">
               <a href="https://www.linkedin.com/in/saurabh-solanke/" target="_blank">
