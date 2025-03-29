@@ -6,7 +6,7 @@ import Techstacks from "./components/Techstacks";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import React, { useState, useEffect } from "react";
-import * as THREE from 'three';
+// import * as THREE from 'three';
 import Blogs from "./components/Blogs";
 import Contributions from "./components/Contributions";
 
