@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
+import {
   RiAppleFill,
   RiUserLine,
   RiCodeSSlashLine,
@@ -18,7 +18,7 @@ import {
 } from "react-icons/ri";
 import Link from "next/link";
 
-const Navbar = ({ toggleTheme, theme }) => {
+const Navbar = ({ toggleTheme, theme = 'dark' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -38,32 +38,32 @@ const Navbar = ({ toggleTheme, theme }) => {
   }, []);
 
   const navItems = [
-    { 
-      name: "About", 
+    {
+      name: "About",
       href: "/about",
       icon: <RiUserLine className="w-4 h-4" />,
       tooltip: "View Profile"
     },
-    { 
-      name: "Projects", 
+    {
+      name: "Projects",
       href: "/projects",
       icon: <RiCodeSSlashLine className="w-4 h-4" />,
       tooltip: "Browse Projects"
     },
-    { 
-      name: "Photography", 
+    {
+      name: "Photography",
       href: "/photography",
       icon: <RiCameraLensLine className="w-4 h-4" />,
       tooltip: "View Photography"
     },
-    { 
-      name: "Local Guide", 
+    {
+      name: "Local Guide",
       href: "/local-guide",
       icon: <RiMapPin2Line className="w-4 h-4" />,
       tooltip: "Local Guide Contributions"
     },
-    { 
-      name: "Blogs", 
+    {
+      name: "Blogs",
       href: "/blogs",
       icon: <RiArticleLine className="w-4 h-4" />,
       tooltip: "Read Articles"
@@ -72,7 +72,7 @@ const Navbar = ({ toggleTheme, theme }) => {
 
   return (
     <>
-      <div 
+      <div
         className={`fixed w-full top-0 z-50 transition-all duration-300 
           ${isScrolled ? 'bg-white/60 dark:bg-black/60' : 'bg-white/40 dark:bg-black/40'} 
           backdrop-blur-xl border-b border-white/10`}
@@ -112,7 +112,7 @@ const Navbar = ({ toggleTheme, theme }) => {
                       {item.icon}
                       <span>{item.name}</span>
                     </Link>
-                    
+
                     {/* Tooltip */}
                     <AnimatePresence>
                       {hoveredItem === item.name && (
@@ -140,14 +140,14 @@ const Navbar = ({ toggleTheme, theme }) => {
                 <RiBatteryLine className="w-4 h-4" />
                 <RiSearchLine className="w-4 h-4" />
                 <RiNotification3Line className="w-4 h-4" />
-                
+
                 {/* Theme Toggle */}
                 <button
                   onClick={toggleTheme}
                   className="p-1 rounded-md hover:bg-white/10"
                 >
-                  {theme === 'dark' ? 
-                    <RiSunLine className="w-4 h-4" /> : 
+                  {theme === 'dark' ?
+                    <RiSunLine className="w-4 h-4" /> :
                     <RiMoonLine className="w-4 h-4" />
                   }
                 </button>
@@ -155,8 +155,8 @@ const Navbar = ({ toggleTheme, theme }) => {
 
               {/* Time */}
               <span className="text-xs">
-                {currentTime.toLocaleTimeString('en-US', { 
-                  hour: 'numeric', 
+                {currentTime.toLocaleTimeString('en-US', {
+                  hour: 'numeric',
                   minute: '2-digit'
                 })}
               </span>
@@ -186,9 +186,21 @@ const Navbar = ({ toggleTheme, theme }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="fixed inset-x-0 top-7 p-4 bg-white/60 dark:bg-black/60 
-              backdrop-blur-xl border-b border-white/10 md:hidden z-50"
+        backdrop-blur-xl border-b border-white/10 md:hidden z-50"
           >
-            {/* Mobile menu content */}
+            {/* Mobile Menu Items */}
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-2 py-1 text-black/80 dark:text-white/80 
+            hover:bg-white/10 dark:hover:bg-white/10 rounded-md"
+                onClick={() => setIsMobileMenuOpen(false)} // Close menu on item click
+              >
+                {item.icon}
+                <span>{item.name}</span>
+              </Link>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
