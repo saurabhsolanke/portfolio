@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en" data-color-theme="luxury">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solanke Themes - Beautiful, professional color themes for modern web projects. Luxury Green and Corporate Blue palettes with dark mode support.">
+  <meta name="keywords" content="css themes, color palette, design system, glass morphism, dark mode">
+  <meta name="author" content="Saurabh Solanke">
+  
+  <title>Solanke Themes - Professional CSS Theme Library</title>
+  
+  <!-- Solanke Themes -->
+  <link rel="stylesheet" href="solanke-themes.css">
+
+</head>
+<body data-theme-enabled>
+
+  <!-- Header/Navigation -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="#home" class="logo text-gradient-theme">Solanke Themes</a>
+      <ul class="nav-links">
+        <li><a href="#features" class="text-theme-dark">Features</a></li>
+        <li><a href="#components" class="text-theme-dark">Components</a></li>
+        <li><a href="#class-reference" class="text-theme-dark">Classes</a></li>
+        <li><a href="#docs" class="text-theme-dark">Docs</a></li>
+        <li>
+          <button onclick="toggleSearch()" class="btn-theme-secondary">
+            🔍 Search
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Search Modal -->
+  <div id="searchModal" class="modal-overlay hidden" onclick="closeSearch(event)">
+    <div class="modal-content glass-theme w-full max-w-3xl p-0 overflow-hidden rounded-3xl" onclick="event.stopPropagation()">
+      <div class="p-6 border-b border-theme-mint">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="input-theme pl-12" 
+            placeholder="Search for classes, components, features..."
+            oninput="performSearch()"
+            onkeydown="handleSearchKeydown(event)"
+          >
+          <span class="absolute left-4 top-1-2 text-xl">🔍</span>
+          <button 
+            onclick="closeSearch()" 
+            class="absolute right-4 top-1-2 bg-transparent border-0 cursor-pointer text-2xl text-theme-dark"
+          >×</button>
+        </div>
+        <div class="flex justify-between items-center mt-2">
+          <p class="text-theme-dark-80 text-sm m-0">
+            Try: "button", "grid", "animation", "gradient", "card"
+          </p>
+          <kbd class="text-xs bg-theme-sage-20 px-2 py-1 rounded text-theme-dark">
+            Ctrl+K / ⌘K
+          </kbd>
+        </div>
+      </div>
+      
+      <div id="searchResults" class="p-6 overflow-y-auto">
+        <div class="text-center text-theme-dark-80 py-12 px-4">
+          <div class="text-5xl mb-4">🔍</div>
+          <p>Start typing to search for classes, components, or features...</p>
+          <div class="mt-8 flex flex-wrap gap-2 justify-center">
+            <button onclick="quickSearch('button')" class="badge-theme-primary cursor-pointer">button</button>
+            <button onclick="quickSearch('grid')" class="badge-theme-primary cursor-pointer">grid</button>
+            <button onclick="quickSearch('animation')" class="badge-theme-primary cursor-pointer">animation</button>
+            <button onclick="quickSearch('gradient')" class="badge-theme-primary cursor-pointer">gradient</button>
+            <button onclick="quickSearch('card')" class="badge-theme-primary cursor-pointer">card</button>
+            <button onclick="quickSearch('flex')" class="badge-theme-primary cursor-pointer">flex</button>
+            <button onclick="quickSearch('text')" class="badge-theme-primary cursor-pointer">text</button>
+            <button onclick="quickSearch('shadow')" class="badge-theme-primary cursor-pointer">shadow</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Controls -->
+  <div class="theme-controls">
+    <button onclick="switchTheme('luxury')" class="theme-btn bg-theme-sage" title="Luxury Green Theme">🌿</button>
+    <button onclick="switchTheme('corporate')" class="theme-btn bg-theme-accent" title="Corporate Blue Theme">💼</button>
+    <button onclick="toggleDark()" class="theme-btn bg-theme-darkest text-theme-cream" title="Toggle Dark Mode">🌙</button>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero section" id="home">
+    <div>
+      <div class="badge-theme-accent animate-fade-in mb-6 inline-block">
+        ✨ v1.0.0 Now Available
+      </div>
+      
+      <h1 class="hero-title text-gradient-theme animate-fade-in">
+        Beautiful Themes for Modern Web
+      </h1>
+      
+      <p class="hero-subtitle text-theme-dark animate-fade-in delay-200">
+        Professional color palettes with Luxury Green and Corporate Blue themes. Glass morphism effects, dark mode, and everything you need to build stunning websites.
+      </p>
+      
+      <div class="button-group animate-fade-in delay-300 mb-12">
+        <button class="btn-theme-primary" onclick="document.getElementById('docs').scrollIntoView({behavior:'smooth'})">
+          📚 View Documentation
+        </button>
+        <button class="btn-theme-secondary" onclick="window.open('demo.html', '_blank')">
+          🎨 Try Demo
+        </button>
+        <button class="btn-theme-accent" onclick="copyToClipboard()">
+          📋 Copy CDN Link
+        </button>
+      </div>
+
+      <!-- Quick Install -->
+      <div class="glass-theme animate-fade-in p-6 rounded-lg text-left delay-400">
+        <div class="flex justify-between items-center mb-2">
+          <span class="badge-theme-primary">Quick Install</span>
+          <button onclick="copyCode(this)" class="btn-theme-secondary p-2 text-sm">
+            Copy
+          </button>
+        </div>
+        <code class="text-theme-dark text-sm break-all">
+          &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YOUR-USERNAME/solanke-themes@v1.0.0/solanke-themes.css"&gt;
+        </code>
+      </div>
+
+      <div class="scroll-indicator">
+        <span class="text-4xl">↓</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section">
+    <div class="grid-4">
+      <div class="glass-theme hover-lift p-8 rounded-lg text-center" data-aos="fade-up" data-aos-delay="0">
+        <div class="stat-number text-gradient-theme">2</div>
+        <p class="text-theme-dark">Color Themes</p>
+      </div>
+      <div class="glass-theme hover-lift p-8 rounded-lg text-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-number text-gradient-theme">50+</div>
+        <p class="text-theme-dark">CSS Classes</p>
+      </div>
+      <div class="glass-theme hover-lift p-8 rounded-lg text-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-number text-gradient-theme">0</div>
+        <p class="text-theme-dark">Dependencies</p>
+      </div>
+      <div class="glass-theme hover-lift p-8 rounded-lg text-center" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-number text-gradient-theme">100%</div>
+        <p class="text-theme-dark">Free & Open</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <h2 class="section-title text-gradient-theme" data-aos="fade-up">Powerful Features</h2>
+    <p class="section-subtitle text-theme-dark" data-aos="fade-up" data-aos-delay="100">Everything you need to build beautiful, modern websites</p>
+    
+    <div class="grid-3">
+      <div class="card-theme hover-lift feature-card" data-aos="zoom-in" data-aos-delay="0">
+        <span class="feature-icon">🎨</span>
+        <h3 class="feature-title text-theme-darkest">Two Beautiful Themes</h3>
+        <p class="text-theme-dark-80">Luxury Green and Corporate Blue color palettes, professionally designed and ready to use.</p>
+      </div>
+
+      <div class="card-theme hover-lift feature-card" data-aos="zoom-in" data-aos-delay="100">
+        <span class="feature-icon">🌙</span>
+        <h3 class="feature-title text-theme-darkest">Dark Mode Built-in</h3>
+        <p class="text-theme-dark-80">Smooth dark mode transitions out of the box. Toggle with a single class.</p>
+      </div>
+
+      <div class="card-theme hover-lift feature-card" data-aos="zoom-in" data-aos-delay="200">
+        <span class="feature-icon">💎</span>
+        <h3 class="feature-title text-theme-darkest">Glass Morphism</h3>
+        <p class="text-theme-dark-80">Stunning liquid glass effects inspired by Apple's design language.</p>
+      </div>
+
+      <div class="card-theme hover-lift feature-card" data-aos="zoom-in" data-aos-delay="0">
+        <span class="feature-icon">⚡</span>
+        <h3 class="feature-title text-theme-darkest">Lightning Fast</h3>
+        <p class="text-theme-dark-80">Pure CSS with zero JavaScript dependencies. Blazing fast load times.</p>
+      </div>
+
+      <div class="card-theme hover-lift feature-card" data-aos="zoom-in" data-aos-delay="100">
+        <span class="feature-icon">📱</span>
+        <h3 class="feature-title text-theme-darkest">Fully Responsive</h3>
+        <p class="text-theme-dark-80">Mobile-first design that looks perfect on any device or screen size.</p>
+      </div>
+
+      <div class="card-theme hover-lift feature-card" data-aos="zoom-in" data-aos-delay="200">
+        <span class="feature-icon">🚀</span>
+        <h3 class="feature-title text-theme-darkest">CDN Ready</h3>
+        <p class="text-theme-dark-80">Instant global delivery via jsDelivr. No installation required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components Showcase -->
+  <section class="section" id="components" class="bg-gradient-to-b from-transparent to-theme-mint-5 via-theme-mint-10 to-transparent">
+    <h2 class="section-title text-gradient-theme">Rich Component Library</h2>
+    <p class="section-subtitle text-theme-dark">Pre-built components ready to use</p>
+    
+    <!-- Buttons -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">Buttons</h3>
+      <div class="button-group justify-start">
+        <button class="btn-theme-primary">Primary Button</button>
+        <button class="btn-theme-secondary">Secondary Button</button>
+        <button class="btn-theme-accent">Accent Button</button>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid-3 mb-8">
+      <div class="card-theme hover-lift">
+        <span class="badge-theme-primary">Featured</span>
+        <h4 class="text-theme-darkest mt-4 mb-2">Glass Card</h4>
+        <p class="text-theme-dark-80">Beautiful glass morphism effect with smooth hover animations.</p>
+        <button class="btn-theme-primary mt-4">Learn More</button>
+      </div>
+
+      <div class="card-theme hover-lift">
+        <span class="badge-theme-secondary">Popular</span>
+        <h4 class="text-theme-darkest mt-4 mb-2">Responsive</h4>
+        <p class="text-theme-dark-80">Mobile-first design approach for perfect display everywhere.</p>
+        <button class="btn-theme-secondary mt-4">Explore</button>
+      </div>
+
+      <div class="card-theme hover-lift">
+        <span class="badge-theme-accent">New</span>
+        <h4 class="text-theme-darkest mt-4 mb-2">Easy to Use</h4>
+        <p class="text-theme-dark-80">Simple class names that make sense. No complex configuration.</p>
+        <button class="btn-theme-accent mt-4">Get Started</button>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="flex flex-col gap-4 mb-8">
+      <div class="alert-theme-info">
+        <strong>💡 Info:</strong> All components support dark mode automatically!
+      </div>
+      <div class="alert-theme-success">
+        <strong>✅ Success:</strong> Your theme has been applied successfully!
+      </div>
+      <div class="alert-theme-warning">
+        <strong>⚠️ Note:</strong> Remember to pin your CDN version in production.
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="glass-theme p-8 rounded-lg">
+      <h3 class="text-theme-darkest">Badges & Tags</h3>
+      <div class="flex gap-3 flex-wrap">
+        <span class="badge-theme-primary">React</span>
+        <span class="badge-theme-secondary">Next.js</span>
+        <span class="badge-theme-accent">TypeScript</span>
+        <span class="badge-theme-primary">Vue</span>
+        <span class="badge-theme-secondary">Tailwind</span>
+        <span class="badge-theme-accent">Node.js</span>
+        <span class="badge-theme-primary">HTML5</span>
+        <span class="badge-theme-secondary">CSS3</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Palettes -->
+  <section class="section">
+    <h2 class="section-title text-gradient-theme" data-aos="fade-down">Color Palettes</h2>
+    <p class="section-subtitle text-theme-dark" data-aos="fade-down" data-aos-delay="100">Professional color schemes for your projects</p>
+    
+    <div class="grid-2">
+      <!-- Luxury Green -->
+      <div class="card-theme" data-aos="fade-right" data-aos-duration="800">
+        <h3 class="text-theme-darkest">🌿 Luxury Green</h3>
+        <p class="text-theme-dark-80 mb-6">Elegant nature-inspired palette with forest greens and soft creams.</p>
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-darkest w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Darkest</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#0D2B1D</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-dark w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Dark</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#345635</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-sage w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Sage</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#6B8F71</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-mint w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Mint</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#AEC3B0</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-cream w-15 h-15 rounded-lg border-2 border-theme-mint"></div>
+            <div>
+              <strong class="text-theme-darkest">Cream</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#E3EFD3</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corporate Blue -->
+      <div class="card-theme" data-aos="fade-left" data-aos-duration="800">
+        <h3 class="text-theme-darkest">💼 Corporate Blue</h3>
+        <p class="text-theme-dark-80 mb-6">Professional palette with blue-grays and gold accent for business sites.</p>
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-darkest w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Darkest</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#2E4053</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-dark w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Steel</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#AAB7B8</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-sage w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Silver</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#BFC9CA</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-mint w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Cloud</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#D5D8DC</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-theme-accent w-15 h-15 rounded-lg"></div>
+            <div>
+              <strong class="text-theme-darkest">Gold</strong>
+              <p class="text-theme-dark-80 text-sm m-0">#F1C40F</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Example -->
+  <section class="section" id="docs">
+    <h2 class="section-title text-gradient-theme">Easy to Use</h2>
+    <p class="section-subtitle text-theme-dark">Get started in seconds</p>
+    
+    <div class="grid-2">
+      <div>
+        <h3 class="text-theme-darkest mb-4">1. Include the CSS</h3>
+        <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html data-color-theme="luxury"&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/gh/
+    YOUR-USERNAME/solanke-themes@v1.0.0/
+    solanke-themes.css"&gt;
+&lt;/head&gt;
+&lt;body data-theme-enabled&gt;
+  &lt;!-- Your content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-theme-darkest mb-4">2. Use the Classes</h3>
+        <div class="code-block">
+&lt;!-- Buttons --&gt;
+&lt;button class="btn-theme-primary"&gt;
+  Primary
+&lt;/button&gt;
+
+&lt;!-- Cards --&gt;
+&lt;div class="card-theme hover-lift"&gt;
+  &lt;h3 class="text-gradient-theme"&gt;
+    Card Title
+  &lt;/h3&gt;
+  &lt;p class="text-theme-dark"&gt;
+    Content here
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Glass Effect --&gt;
+&lt;div class="glass-theme"&gt;
+  Liquid glass design
+&lt;/div&gt;
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <button class="btn-theme-primary" onclick="window.open('README-THEME-LIBRARY.md', '_blank')">
+        📖 View Full Documentation
+      </button>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" id="pricing">
+    <div class="gradient-theme-primary p-8 rounded-lg text-center">
+      <h2 class="text-theme-cream text-2xl md:text-3xl lg:text-4xl mb-4">
+        100% Free & Open Source
+      </h2>
+      <p class="text-theme-cream text-sm md:text-base lg:text-lg mb-8 opacity-95 max-w-600 mx-auto">
+        No subscriptions, no hidden fees, no limits. Use Solanke Themes in unlimited personal and commercial projects.
+      </p>
+      <div class="button-group">
+        <button class="btn-theme-accent" onclick="copyToClipboard()">
+          🚀 Get Started Now
+        </button>
+        <button class="btn-theme-secondary" onclick="window.open('https://github.com/saurabhsolanke', '_blank')">
+          ⭐ Star on GitHub
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Class Reference -->
+  <section class="section" id="class-reference">
+    <h2 class="section-title text-gradient-theme">Complete Class Reference</h2>
+    <p class="section-subtitle text-theme-dark">Browse all available utility classes</p>
+    
+    <!-- Colors & Backgrounds -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">🎨 Background & Text Colors</h3>
+      
+      <h4 class="text-theme-darkest mb-4 text-base">Background Classes</h4>
+      <div class="grid-auto-fit-sm gap-4 mb-8">
+        <div class="bg-theme-darkest p-4 rounded-lg h-25 flex items-center justify-center">
+          <span class="text-theme-cream font-semibold">.bg-theme-darkest</span>
+        </div>
+        <div class="bg-theme-dark p-4 rounded-lg h-25 flex items-center justify-center">
+          <span class="text-theme-cream font-semibold">.bg-theme-dark</span>
+        </div>
+        <div class="bg-theme-sage p-4 rounded-lg h-25 flex items-center justify-center">
+          <span class="text-theme-cream font-semibold">.bg-theme-sage</span>
+        </div>
+        <div class="bg-theme-mint p-4 rounded-lg border-2 border-theme-sage h-25 flex items-center justify-center">
+          <span class="text-theme-darkest font-semibold">.bg-theme-mint</span>
+        </div>
+        <div class="bg-theme-cream p-4 rounded-lg border-2 border-theme-mint h-25 flex items-center justify-center">
+          <span class="text-theme-darkest font-semibold">.bg-theme-cream</span>
+        </div>
+        <div class="bg-theme-accent p-4 rounded-lg h-25 flex items-center justify-center">
+          <span class="text-theme-cream font-semibold">.bg-theme-accent</span>
+        </div>
+      </div>
+
+      <h4 class="text-theme-darkest mb-4 text-base">Text Color Classes</h4>
+      <div class="card-theme p-6">
+        <p class="text-theme-darkest text-lg font-semibold">.text-theme-darkest - Darkest text</p>
+        <p class="text-theme-dark text-lg font-semibold">.text-theme-dark - Dark text</p>
+        <p class="text-theme-sage text-lg font-semibold">.text-theme-sage - Sage text</p>
+        <p class="text-theme-mint text-lg font-semibold">.text-theme-mint - Mint text</p>
+        <p class="text-theme-accent text-lg font-semibold">.text-theme-accent - Accent text</p>
+        <p class="text-gradient-theme text-lg font-bold">.text-gradient-theme - Gradient text effect</p>
+      </div>
+    </div>
+
+    <!-- Gradients -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">✨ Gradient Classes</h3>
+      <div class="grid-2 gap-4">
+        <div class="gradient-theme-primary p-8 rounded-xl h-30 flex items-center justify-center">
+          <span class="text-theme-cream font-bold text-lg">.gradient-theme-primary</span>
+        </div>
+        <div class="gradient-theme-secondary p-8 rounded-xl h-30 flex items-center justify-center">
+          <span class="text-theme-cream font-bold text-lg">.gradient-theme-secondary</span>
+        </div>
+        <div class="gradient-theme-accent p-8 rounded-xl h-30 flex items-center justify-center">
+          <span class="text-theme-cream font-bold text-lg">.gradient-theme-accent</span>
+        </div>
+        <div class="gradient-theme-vertical p-8 rounded-xl h-30 flex items-center justify-center">
+          <span class="text-theme-cream font-bold text-lg">.gradient-theme-vertical</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animations -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">🎭 Animation Classes</h3>
+      <div class="grid-3 gap-4">
+        <div class="card-theme animate-fade-in p-6 text-center">
+          <div class="text-4xl mb-3">↓</div>
+          <code class="text-sm">.animate-fade-in</code>
+        </div>
+        <div class="card-theme animate-pulse p-6 text-center">
+          <div class="text-4xl mb-3">💫</div>
+          <code class="text-sm">.animate-pulse</code>
+        </div>
+        <div class="card-theme animate-float p-6 text-center">
+          <div class="text-4xl mb-3">☁️</div>
+          <code class="text-sm">.animate-float</code>
+        </div>
+        <div class="card-theme p-6 text-center">
+          <div class="text-4xl mb-3 animate-spin">⚙️</div>
+          <code class="text-sm">.animate-spin</code>
+        </div>
+        <div class="card-theme animate-bounce p-6 text-center">
+          <div class="text-4xl mb-3">⬆️</div>
+          <code class="text-sm">.animate-bounce</code>
+        </div>
+        <div class="card-theme animate-scale-up p-6 text-center">
+          <div class="text-4xl mb-3">📈</div>
+          <code class="text-sm">.animate-scale-up</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hover Effects -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">🖱️ Hover Effect Classes</h3>
+      <div class="grid-3 gap-4">
+        <div class="card-theme hover-lift cursor-pointer p-6 text-center">
+          <div class="text-4xl mb-3">⬆️</div>
+          <code class="text-sm">.hover-lift</code>
+          <p class="text-xs text-theme-dark-80 mt-2">Hover to lift up</p>
+        </div>
+        <div class="card-theme hover-scale cursor-pointer p-6 text-center">
+          <div class="text-4xl mb-3">🔍</div>
+          <code class="text-sm">.hover-scale</code>
+          <p class="text-xs text-theme-dark-80 mt-2">Hover to scale</p>
+        </div>
+        <div class="card-theme hover-brightness cursor-pointer p-6 text-center">
+          <div class="text-4xl mb-3">💡</div>
+          <code class="text-sm">.hover-brightness</code>
+          <p class="text-xs text-theme-dark-80 mt-2">Hover to brighten</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Elements -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">📝 Form Element Classes</h3>
+      <div class="grid-2 gap-8">
+        <div>
+          <label class="label-theme">.input-theme</label>
+          <input type="text" class="input-theme" placeholder="Enter text here">
+        </div>
+        <div>
+          <label class="label-theme">.textarea-theme</label>
+          <textarea class="textarea-theme" placeholder="Enter longer text here"></textarea>
+        </div>
+        <div>
+          <label class="label-theme">.select-theme</label>
+          <select class="select-theme">
+            <option>Select an option</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+          </select>
+        </div>
+        <div>
+          <label class="label-theme flex items-center gap-2">
+            <input type="checkbox" class="checkbox-theme">
+            .checkbox-theme
+          </label>
+          <label class="label-theme flex items-center gap-2 mt-2">
+            <input type="radio" name="demo" class="radio-theme">
+            .radio-theme
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout Classes -->
+    <div class="glass-theme" >
+      <h3 class="text-theme-darkest mb-6 text-lg">📐 Layout & Grid Classes</h3>
+      
+      <h4 class="text-theme-darkest mb-3">.grid-2 (2 columns)</h4>
+      <div class="grid-2 gap-4 mb-4">
+        <div class="bg-theme-sage-20 p-4 rounded text-center text-theme-darkest">Column 1</div>
+        <div class="bg-theme-sage-20 p-4 rounded text-center text-theme-darkest">Column 2</div>
+      </div>
+
+      <h4 class="text-theme-darkest mb-3">.grid-3 (3 columns)</h4>
+      <div class="grid-3 gap-4 mb-4">
+        <div class="bg-theme-mint-40 p-4 rounded text-center text-theme-darkest">Col 1</div>
+        <div class="bg-theme-mint-40 p-4 rounded text-center text-theme-darkest">Col 2</div>
+        <div class="bg-theme-mint-40 p-4 rounded text-center text-theme-darkest">Col 3</div>
+      </div>
+
+      <h4 class="text-theme-darkest mb-3">.grid-4 (4 columns)</h4>
+      <div class="grid-4 gap-4">
+        <div class="bg-theme-cream-80 p-4 rounded text-center text-theme-darkest border border-theme-mint">1</div>
+        <div class="bg-theme-cream-80 p-4 rounded text-center text-theme-darkest border border-theme-mint">2</div>
+        <div class="bg-theme-cream-80 p-4 rounded text-center text-theme-darkest border border-theme-mint">3</div>
+        <div class="bg-theme-cream-80 p-4 rounded text-center text-theme-darkest border border-theme-mint">4</div>
+      </div>
+
+      <div class="mt-4 p-4 bg-theme-darkest-20 rounded">
+        <p class="text-theme-darkest font-semibold mb-2">Other Grid Classes:</p>
+        <code class="text-sm text-theme-dark">.grid-auto-fit</code>, 
+        <code class="text-sm text-theme-dark">.grid-auto-fit-sm</code>, 
+        <code class="text-sm text-theme-dark">.grid-auto-fit-md</code>, 
+        <code class="text-sm text-theme-dark">.grid-auto-fit-lg</code>
+      </div>
+    </div>
+
+    <!-- Flexbox -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">🧩 Flexbox Classes</h3>
+      
+      <div class="mb-4">
+        <h4 class="text-theme-darkest mb-2">.flex .justify-between .items-center</h4>
+        <div class="flex justify-between items-center bg-theme-sage-20 p-4 rounded">
+          <div class="bg-theme-sage p-3 rounded text-theme-cream">Left</div>
+          <div class="bg-theme-sage p-3 rounded text-theme-cream">Center</div>
+          <div class="bg-theme-sage p-3 rounded text-theme-cream">Right</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <h4 class="text-theme-darkest mb-2">.flex .justify-center .items-center .gap-4</h4>
+        <div class="flex justify-center items-center gap-4 bg-theme-mint-40 p-4 rounded">
+          <div class="bg-theme-darkest text-theme-cream p-3 rounded">Item 1</div>
+          <div class="bg-theme-darkest text-theme-cream p-3 rounded">Item 2</div>
+          <div class="bg-theme-darkest text-theme-cream p-3 rounded">Item 3</div>
+        </div>
+      </div>
+
+      <div class="grid-3 gap-2 mt-4">
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.flex-row</code>
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.flex-col</code>
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.flex-wrap</code>
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.justify-start</code>
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.justify-end</code>
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.justify-center</code>
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.items-start</code>
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.items-end</code>
+        <code class="text-xs bg-theme-cream-60 p-2 rounded">.items-center</code>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">📖 Typography Classes</h3>
+      
+      <div class="mb-4">
+        <p class="text-xs text-theme-dark">.text-xs - Extra small text</p>
+        <p class="text-sm text-theme-dark">.text-sm - Small text</p>
+        <p class="text-base text-theme-dark">.text-base - Base text</p>
+        <p class="text-lg text-theme-dark">.text-lg - Large text</p>
+        <p class="text-xl text-theme-dark">.text-xl - Extra large text</p>
+        <p class="text-2xl text-theme-dark">.text-2xl - 2XL text</p>
+        <p class="text-3xl text-theme-dark">.text-3xl - 3XL text</p>
+      </div>
+
+      <div class="grid-3 gap-2">
+        <div class="bg-theme-cream-60 p-3 rounded">
+          <p class="font-light text-theme-darkest">.font-light</p>
+        </div>
+        <div class="bg-theme-cream-60 p-3 rounded">
+          <p class="font-normal text-theme-darkest">.font-normal</p>
+        </div>
+        <div class="bg-theme-cream-60 p-3 rounded">
+          <p class="font-medium text-theme-darkest">.font-medium</p>
+        </div>
+        <div class="bg-theme-cream-60 p-3 rounded">
+          <p class="font-semibold text-theme-darkest">.font-semibold</p>
+        </div>
+        <div class="bg-theme-cream-60 p-3 rounded">
+          <p class="font-bold text-theme-darkest">.font-bold</p>
+        </div>
+        <div class="bg-theme-cream-60 p-3 rounded">
+          <p class="font-black text-theme-darkest">.font-black</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacing -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">📏 Spacing Classes</h3>
+      
+      <div class="mb-4">
+        <h4 class="text-theme-darkest mb-2">Padding Classes</h4>
+        <div class="flex gap-4 flex-wrap">
+          <div class="bg-theme-mint-40 p-0 border-2 border-theme-sage"><div class="bg-theme-sage-20 p-2 text-xs">.p-0</div></div>
+          <div class="bg-theme-mint-40 p-2 border-2 border-theme-sage"><div class="bg-theme-sage-20 p-2 text-xs">.p-2</div></div>
+          <div class="bg-theme-mint-40 p-4 border-2 border-theme-sage"><div class="bg-theme-sage-20 p-2 text-xs">.p-4</div></div>
+          <div class="bg-theme-mint-40 p-6 border-2 border-theme-sage"><div class="bg-theme-sage-20 p-2 text-xs">.p-6</div></div>
+          <div class="bg-theme-mint-40 p-8 border-2 border-theme-sage"><div class="bg-theme-sage-20 p-2 text-xs">.p-8</div></div>
+        </div>
+      </div>
+
+      <div class="bg-theme-darkest-20 p-4 rounded">
+        <p class="text-theme-darkest font-semibold mb-2">Available Classes:</p>
+        <div class="flex gap-2 flex-wrap">
+          <code class="text-xs bg-theme-cream p-1 rounded">.m-{0-20}</code>
+          <code class="text-xs bg-theme-cream p-1 rounded">.p-{0-20}</code>
+          <code class="text-xs bg-theme-cream p-1 rounded">.mx-{0-8}</code>
+          <code class="text-xs bg-theme-cream p-1 rounded">.my-{0-16}</code>
+          <code class="text-xs bg-theme-cream p-1 rounded">.px-{0-12}</code>
+          <code class="text-xs bg-theme-cream p-1 rounded">.py-{0-16}</code>
+          <code class="text-xs bg-theme-cream p-1 rounded">.mt-, .mb-, .ml-, .mr-</code>
+          <code class="text-xs bg-theme-cream p-1 rounded">.pt-, .pb-, .pl-, .pr-</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders & Rounded -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">🔲 Border & Rounded Classes</h3>
+      
+      <div class="grid-4 gap-4 mb-4">
+        <div class="bg-theme-sage-20 p-4 rounded-none border-2 border-theme-sage text-center">
+          <code class="text-xs">.rounded-none</code>
+        </div>
+        <div class="bg-theme-sage-20 p-4 rounded border-2 border-theme-sage text-center">
+          <code class="text-xs">.rounded</code>
+        </div>
+        <div class="bg-theme-sage-20 p-4 rounded-lg border-2 border-theme-sage text-center">
+          <code class="text-xs">.rounded-lg</code>
+        </div>
+        <div class="bg-theme-sage-20 p-4 rounded-xl border-2 border-theme-sage text-center">
+          <code class="text-xs">.rounded-xl</code>
+        </div>
+        <div class="bg-theme-sage-20 p-4 rounded-2xl border-2 border-theme-sage text-center">
+          <code class="text-xs">.rounded-2xl</code>
+        </div>
+        <div class="bg-theme-sage-20 p-4 rounded-3xl border-2 border-theme-sage text-center">
+          <code class="text-xs">.rounded-3xl</code>
+        </div>
+        <div class="bg-theme-sage-20 p-4 rounded-full border-2 border-theme-sage text-center">
+          <code class="text-xs">.rounded-full</code>
+        </div>
+        <div class="bg-theme-sage-20 p-4 border-4 border-theme-darkest text-center">
+          <code class="text-xs">.border-4</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shadow Classes -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">🌑 Shadow Classes</h3>
+      <div class="grid-4 gap-6">
+        <div class="bg-theme-cream p-6 rounded-lg shadow-theme-sm text-center">
+          <code class="text-sm">.shadow-theme-sm</code>
+        </div>
+        <div class="bg-theme-cream p-6 rounded-lg shadow-theme-md text-center">
+          <code class="text-sm">.shadow-theme-md</code>
+        </div>
+        <div class="bg-theme-cream p-6 rounded-lg shadow-theme-lg text-center">
+          <code class="text-sm">.shadow-theme-lg</code>
+        </div>
+        <div class="bg-theme-cream p-6 rounded-lg shadow-theme-xl text-center">
+          <code class="text-sm">.shadow-theme-xl</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Utility Classes -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">🛠️ Utility Classes</h3>
+      
+      <div class="grid-2 gap-4">
+        <div class="bg-theme-cream-60 p-4 rounded">
+          <h4 class="text-theme-darkest font-bold mb-2">Opacity</h4>
+          <div class="flex gap-2">
+            <div class="bg-theme-sage opacity-10 p-2 rounded flex-1 text-center text-xs">.opacity-10</div>
+            <div class="bg-theme-sage opacity-50 p-2 rounded flex-1 text-center text-xs">.opacity-50</div>
+            <div class="bg-theme-sage opacity-100 p-2 rounded flex-1 text-center text-xs">.opacity-100</div>
+          </div>
+        </div>
+
+        <div class="bg-theme-cream-60 p-4 rounded">
+          <h4 class="text-theme-darkest font-bold mb-2">Display</h4>
+          <code class="text-xs">.block .inline-block .inline .flex .grid .hidden</code>
+        </div>
+
+        <div class="bg-theme-cream-60 p-4 rounded">
+          <h4 class="text-theme-darkest font-bold mb-2">Position</h4>
+          <code class="text-xs">.static .relative .absolute .fixed .sticky</code>
+        </div>
+
+        <div class="bg-theme-cream-60 p-4 rounded">
+          <h4 class="text-theme-darkest font-bold mb-2">Overflow</h4>
+          <code class="text-xs">.overflow-auto .overflow-hidden .overflow-visible</code>
+        </div>
+
+        <div class="bg-theme-cream-60 p-4 rounded">
+          <h4 class="text-theme-darkest font-bold mb-2">Cursor</h4>
+          <div class="flex flex-col gap-2">
+            <span class="cursor-pointer bg-theme-mint-20 p-2 rounded text-xs">.cursor-pointer</span>
+            <span class="cursor-not-allowed bg-theme-mint-20 p-2 rounded text-xs">.cursor-not-allowed</span>
+          </div>
+        </div>
+
+        <div class="bg-theme-cream-60 p-4 rounded">
+          <h4 class="text-theme-darkest font-bold mb-2">Width/Height</h4>
+          <code class="text-xs">.w-full .w-auto .h-full .h-screen .min-h-screen .max-w-{xs-7xl}</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading & Progress -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">⏳ Loading & Progress</h3>
+      
+      <div class="flex justify-around items-center mb-6">
+        <div class="text-center">
+          <div class="spinner mx-auto mb-2"></div>
+          <code class="text-xs">.spinner</code>
+        </div>
+        <div class="text-center">
+          <div class="spinner-sm mx-auto mb-2"></div>
+          <code class="text-xs">.spinner-sm</code>
+        </div>
+        <div class="text-center">
+          <div class="spinner-lg mx-auto mb-2"></div>
+          <code class="text-xs">.spinner-lg</code>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <code class="text-xs mb-2 block">.progress-bar</code>
+          <div class="progress-bar">
+            <div class="progress-bar-fill w-75"></div>
+          </div>
+        </div>
+
+        <div>
+          <code class="text-xs mb-2 block">.skeleton</code>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-text w-80"></div>
+          <div class="skeleton skeleton-text w-60"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Container & Section -->
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <h3 class="text-theme-darkest mb-6 text-lg">📦 Container & Section Classes</h3>
+      
+      <div class="bg-theme-darkest-20 p-4 rounded-lg">
+        <p class="text-theme-darkest font-semibold mb-3">Container Classes:</p>
+        <div class="grid-3 gap-2">
+          <code class="text-xs bg-theme-cream p-2 rounded">.container (1200px)</code>
+          <code class="text-xs bg-theme-cream p-2 rounded">.container-sm (640px)</code>
+          <code class="text-xs bg-theme-cream p-2 rounded">.container-md (768px)</code>
+          <code class="text-xs bg-theme-cream p-2 rounded">.container-lg (1024px)</code>
+          <code class="text-xs bg-theme-cream p-2 rounded">.container-xl (1400px)</code>
+          <code class="text-xs bg-theme-cream p-2 rounded">.container-full (100%)</code>
+        </div>
+      </div>
+
+      <div class="bg-theme-darkest-20 p-4 rounded-lg mt-4">
+        <p class="text-theme-darkest font-semibold mb-3">Section Classes:</p>
+        <div class="grid-4 gap-2">
+          <code class="text-xs bg-theme-cream p-2 rounded">.section (6rem)</code>
+          <code class="text-xs bg-theme-cream p-2 rounded">.section-sm (4rem)</code>
+          <code class="text-xs bg-theme-cream p-2 rounded">.section-lg (8rem)</code>
+          <code class="text-xs bg-theme-cream p-2 rounded">.section-xl (12rem)</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="section p-8 rounded-lg mb-8">
+    <h2 class="section-title text-gradient-theme">Perfect For</h2>
+    <p class="section-subtitle text-theme-dark">Built for developers, designers, and creators</p>
+    
+    <div class="grid-3">
+      <div class="card-theme hover-lift text-center">
+        <div >💼</div>
+        <h3 class="text-theme-darkest">Portfolios</h3>
+        <p class="text-theme-dark-80">Showcase your work with professional, modern designs.</p>
+      </div>
+
+      <div class="card-theme hover-lift text-center">
+        <div>🚀</div>
+        <h3 class="text-theme-darkest">Landing Pages</h3>
+        <p class="text-theme-dark-80">Launch products with stunning, conversion-optimized pages.</p>
+      </div>
+
+      <div class="card-theme hover-lift text-center">
+        <div >📱</div>
+        <h3 class="text-theme-darkest">Web Apps</h3>
+        <p class="text-theme-dark-80">Build beautiful applications with consistent theming.</p>
+      </div>
+
+      <div class="card-theme hover-lift text-center">
+        <div >🎨</div>
+        <h3 class="text-theme-darkest">Design Systems</h3>
+        <p class="text-theme-dark-80">Create cohesive design systems for your brand.</p>
+      </div>
+
+      <div class="card-theme hover-lift text-center">
+        <div >📝</div>
+        <h3 class="text-theme-darkest">Blogs</h3>
+        <p class="text-theme-dark-80">Make your content shine with elegant typography.</p>
+      </div>
+
+      <div class="card-theme hover-lift text-center">
+        <div >🏢</div>
+        <h3 class="text-theme-darkest">Business Sites</h3>
+        <p class="text-theme-dark-80">Professional corporate websites that convert.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="section p-8 rounded-lg mb-8">
+    <div class="glass-theme p-8 rounded-lg mb-8">
+      <div class="grid-2 mb-8">
+        <div>
+          <h3 class="text-gradient-theme mb-4 text-lg">Solanke Themes</h3>
+          <p class="text-theme-dark-80 max-w-100 mb-4">
+            Professional CSS theme library with beautiful color palettes, glass morphism effects, and dark mode support.
+          </p>
+          <div class="flex gap-2">
+            <span class="badge-theme-primary">MIT License</span>
+            <span class="badge-theme-secondary">v1.0.0</span>
+          </div>
+        </div>
+
+        <div class="grid-auto-fit gap-8">
+          <div>
+            <h4 class="text-theme-darkest mb-2">Resources</h4>
+            <ul class="list-none">
+              <li><a href="README-THEME-LIBRARY.md" class="text-theme-dark">Documentation</a></li>
+              <li><a href="demo.html" class="text-theme-dark">Demo</a></li>
+              <li><a href="QUICK-START.md" class="text-theme-dark">Quick Start</a></li>
+              <li><a href="SETUP-GUIDE.md" class="text-theme-dark">Setup Guide</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="text-theme-darkest mb-2">Connect</h4>
+            <ul class="list-none">
+              <li><a href="https://github.com/saurabhsolanke" class="text-theme-dark">GitHub</a></li>
+              <li><a href="https://linkedin.com/in/saurabh-solanke" class="text-theme-dark">LinkedIn</a></li>
+              <li><a href="#" class="text-theme-dark">Portfolio</a></li>
+              <li><a href="#" class="text-theme-dark">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t-1 border-theme-mint pt-8 text-center">
+        <p class="text-theme-dark-80">
+          Made with <span class="text-theme-accent">♥</span> by <strong>Saurabh Solanke</strong>
+        </p>
+        <p class="text-theme-dark-80 text-sm mt-2">
+          © 2024 Solanke Themes. Free for personal and commercial use.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Search Data Structure
+    const searchData = [
+      // Colors & Backgrounds
+      { term: 'bg-theme-darkest', category: 'Background Colors', description: 'Dark background color', section: 'class-reference' },
+      { term: 'bg-theme-dark', category: 'Background Colors', description: 'Medium dark background', section: 'class-reference' },
+      { term: 'bg-theme-sage', category: 'Background Colors', description: 'Sage green background', section: 'class-reference' },
+      { term: 'bg-theme-mint', category: 'Background Colors', description: 'Mint green background', section: 'class-reference' },
+      { term: 'bg-theme-cream', category: 'Background Colors', description: 'Cream background', section: 'class-reference' },
+      { term: 'bg-theme-accent', category: 'Background Colors', description: 'Accent color background', section: 'class-reference' },
+      { term: 'text-theme-darkest', category: 'Text Colors', description: 'Darkest text color', section: 'class-reference' },
+      { term: 'text-theme-dark', category: 'Text Colors', description: 'Dark text color', section: 'class-reference' },
+      { term: 'text-theme-sage', category: 'Text Colors', description: 'Sage text color', section: 'class-reference' },
+      { term: 'text-theme-mint', category: 'Text Colors', description: 'Mint text color', section: 'class-reference' },
+      { term: 'text-theme-cream', category: 'Text Colors', description: 'Cream text color', section: 'class-reference' },
+      { term: 'text-gradient-theme', category: 'Text Colors', description: 'Gradient text effect', section: 'class-reference' },
+      
+      // Gradients
+      { term: 'gradient-theme-primary', category: 'Gradients', description: 'Primary gradient background', section: 'class-reference' },
+      { term: 'gradient-theme-secondary', category: 'Gradients', description: 'Secondary gradient background', section: 'class-reference' },
+      { term: 'gradient-theme-accent', category: 'Gradients', description: 'Accent gradient background', section: 'class-reference' },
+      { term: 'gradient-theme-vertical', category: 'Gradients', description: 'Vertical gradient background', section: 'class-reference' },
+      
+      // Animations
+      { term: 'animate-fade-in', category: 'Animations', description: 'Fade in animation', section: 'class-reference' },
+      { term: 'animate-pulse', category: 'Animations', description: 'Pulse animation', section: 'class-reference' },
+      { term: 'animate-float', category: 'Animations', description: 'Floating animation', section: 'class-reference' },
+      { term: 'animate-spin', category: 'Animations', description: 'Spinning animation', section: 'class-reference' },
+      { term: 'animate-bounce', category: 'Animations', description: 'Bounce animation', section: 'class-reference' },
+      { term: 'animate-scale-up', category: 'Animations', description: 'Scale up animation', section: 'class-reference' },
+      
+      // Hover Effects
+      { term: 'hover-lift', category: 'Hover Effects', description: 'Lift on hover', section: 'class-reference' },
+      { term: 'hover-scale', category: 'Hover Effects', description: 'Scale on hover', section: 'class-reference' },
+      { term: 'hover-brightness', category: 'Hover Effects', description: 'Brighten on hover', section: 'class-reference' },
+      
+      // Buttons
+      { term: 'btn-theme-primary', category: 'Buttons', description: 'Primary button style', section: 'components' },
+      { term: 'btn-theme-secondary', category: 'Buttons', description: 'Secondary button style', section: 'components' },
+      { term: 'btn-theme-accent', category: 'Buttons', description: 'Accent button style', section: 'components' },
+      { term: 'btn-outline', category: 'Buttons', description: 'Outline button style', section: 'components' },
+      { term: 'btn-ghost', category: 'Buttons', description: 'Ghost button style', section: 'components' },
+      { term: 'btn-sm', category: 'Buttons', description: 'Small button', section: 'components' },
+      { term: 'btn-lg', category: 'Buttons', description: 'Large button', section: 'components' },
+      { term: 'btn-xl', category: 'Buttons', description: 'Extra large button', section: 'components' },
+      
+      // Cards & Components
+      { term: 'card-theme', category: 'Cards', description: 'Theme card component', section: 'components' },
+      { term: 'glass-theme', category: 'Glass Effects', description: 'Glass morphism effect', section: 'components' },
+      { term: 'badge-theme-primary', category: 'Badges', description: 'Primary badge', section: 'components' },
+      { term: 'badge-theme-secondary', category: 'Badges', description: 'Secondary badge', section: 'components' },
+      { term: 'badge-theme-accent', category: 'Badges', description: 'Accent badge', section: 'components' },
+      
+      // Alerts
+      { term: 'alert-theme-info', category: 'Alerts', description: 'Info alert', section: 'components' },
+      { term: 'alert-theme-success', category: 'Alerts', description: 'Success alert', section: 'components' },
+      { term: 'alert-theme-warning', category: 'Alerts', description: 'Warning alert', section: 'components' },
+      
+      // Forms
+      { term: 'input-theme', category: 'Forms', description: 'Themed input field', section: 'class-reference' },
+      { term: 'textarea-theme', category: 'Forms', description: 'Themed textarea', section: 'class-reference' },
+      { term: 'select-theme', category: 'Forms', description: 'Themed select dropdown', section: 'class-reference' },
+      { term: 'checkbox-theme', category: 'Forms', description: 'Themed checkbox', section: 'class-reference' },
+      { term: 'radio-theme', category: 'Forms', description: 'Themed radio button', section: 'class-reference' },
+      { term: 'label-theme', category: 'Forms', description: 'Themed label', section: 'class-reference' },
+      
+      // Layout
+      { term: 'grid-2', category: 'Grid Layout', description: '2 column grid', section: 'class-reference' },
+      { term: 'grid-3', category: 'Grid Layout', description: '3 column grid', section: 'class-reference' },
+      { term: 'grid-4', category: 'Grid Layout', description: '4 column grid', section: 'class-reference' },
+      { term: 'grid-auto-fit', category: 'Grid Layout', description: 'Auto-fit grid layout', section: 'class-reference' },
+      { term: 'flex', category: 'Flexbox', description: 'Flex display', section: 'class-reference' },
+      { term: 'flex-row', category: 'Flexbox', description: 'Flex row direction', section: 'class-reference' },
+      { term: 'flex-col', category: 'Flexbox', description: 'Flex column direction', section: 'class-reference' },
+      { term: 'justify-center', category: 'Flexbox', description: 'Center justify content', section: 'class-reference' },
+      { term: 'justify-between', category: 'Flexbox', description: 'Space between justify', section: 'class-reference' },
+      { term: 'items-center', category: 'Flexbox', description: 'Center align items', section: 'class-reference' },
+      { term: 'gap-4', category: 'Spacing', description: 'Gap spacing', section: 'class-reference' },
+      
+      // Typography
+      { term: 'text-xs', category: 'Typography', description: 'Extra small text', section: 'class-reference' },
+      { term: 'text-sm', category: 'Typography', description: 'Small text', section: 'class-reference' },
+      { term: 'text-lg', category: 'Typography', description: 'Large text', section: 'class-reference' },
+      { term: 'text-xl', category: 'Typography', description: 'Extra large text', section: 'class-reference' },
+      { term: 'font-bold', category: 'Typography', description: 'Bold font weight', section: 'class-reference' },
+      { term: 'font-semibold', category: 'Typography', description: 'Semibold font weight', section: 'class-reference' },
+      
+      // Shadows
+      { term: 'shadow-theme-sm', category: 'Shadows', description: 'Small shadow', section: 'class-reference' },
+      { term: 'shadow-theme-md', category: 'Shadows', description: 'Medium shadow', section: 'class-reference' },
+      { term: 'shadow-theme-lg', category: 'Shadows', description: 'Large shadow', section: 'class-reference' },
+      { term: 'shadow-theme-xl', category: 'Shadows', description: 'Extra large shadow', section: 'class-reference' },
+      
+      // Borders
+      { term: 'rounded', category: 'Borders', description: 'Border radius', section: 'class-reference' },
+      { term: 'rounded-lg', category: 'Borders', description: 'Large border radius', section: 'class-reference' },
+      { term: 'rounded-xl', category: 'Borders', description: 'Extra large border radius', section: 'class-reference' },
+      { term: 'rounded-full', category: 'Borders', description: 'Full circle border radius', section: 'class-reference' },
+      
+      // Loading
+      { term: 'spinner', category: 'Loading', description: 'Loading spinner', section: 'class-reference' },
+      { term: 'progress-bar', category: 'Loading', description: 'Progress bar', section: 'class-reference' },
+      { term: 'skeleton', category: 'Loading', description: 'Skeleton loader', section: 'class-reference' },
+      
+      // Containers
+      { term: 'container', category: 'Containers', description: 'Container max-width 1200px', section: 'class-reference' },
+      { term: 'container-sm', category: 'Containers', description: 'Small container 640px', section: 'class-reference' },
+      { term: 'section', category: 'Containers', description: 'Section padding', section: 'class-reference' },
+      
+      // Features
+      { term: 'dark mode', category: 'Features', description: 'Dark mode support', section: 'features' },
+      { term: 'glass morphism', category: 'Features', description: 'Glass morphism effects', section: 'features' },
+      { term: 'responsive', category: 'Features', description: 'Mobile responsive design', section: 'features' },
+    ];
+
+    // Search Functions
+    function toggleSearch() {
+      const modal = document.getElementById('searchModal');
+      const input = document.getElementById('searchInput');
+      modal.classList.remove('hidden');
+      setTimeout(() => input.focus(), 100);
+    }
+
+    function closeSearch(event) {
+      if (event && event.target.id !== 'searchModal') return;
+      const modal = document.getElementById('searchModal');
+      modal.classList.add('hidden');
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchResults').innerHTML = `
+        <div class="text-center text-theme-dark-80 py-12 px-4">
+          <div class="text-5xl mb-4">🔍</div>
+          <p>Start typing to search for classes, components, or features...</p>
+          <div class="mt-8 flex flex-wrap gap-2 justify-center">
+            <button onclick="quickSearch('button')" class="badge-theme-primary cursor-pointer">button</button>
+            <button onclick="quickSearch('grid')" class="badge-theme-primary cursor-pointer">grid</button>
+            <button onclick="quickSearch('animation')" class="badge-theme-primary cursor-pointer">animation</button>
+            <button onclick="quickSearch('gradient')" class="badge-theme-primary cursor-pointer">gradient</button>
+            <button onclick="quickSearch('card')" class="badge-theme-primary cursor-pointer">card</button>
+            <button onclick="quickSearch('flex')" class="badge-theme-primary cursor-pointer">flex</button>
+            <button onclick="quickSearch('text')" class="badge-theme-primary cursor-pointer">text</button>
+            <button onclick="quickSearch('shadow')" class="badge-theme-primary cursor-pointer">shadow</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function quickSearch(term) {
+      document.getElementById('searchInput').value = term;
+      performSearch();
+    }
+
+    function performSearch() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const resultsContainer = document.getElementById('searchResults');
+      
+      if (!query) {
+        resultsContainer.innerHTML = `
+          <div class="text-center text-theme-dark-80 py-12 px-4">
+            <div class="text-5xl mb-4">🔍</div>
+            <p>Start typing to search for classes, components, or features...</p>
+            <div class="mt-8 flex flex-wrap gap-2 justify-center">
+              <button onclick="quickSearch('button')" class="badge-theme-primary cursor-pointer">button</button>
+              <button onclick="quickSearch('grid')" class="badge-theme-primary cursor-pointer">grid</button>
+              <button onclick="quickSearch('animation')" class="badge-theme-primary cursor-pointer">animation</button>
+              <button onclick="quickSearch('gradient')" class="badge-theme-primary cursor-pointer">gradient</button>
+              <button onclick="quickSearch('card')" class="badge-theme-primary cursor-pointer">card</button>
+              <button onclick="quickSearch('flex')" class="badge-theme-primary cursor-pointer">flex</button>
+              <button onclick="quickSearch('text')" class="badge-theme-primary cursor-pointer">text</button>
+              <button onclick="quickSearch('shadow')" class="badge-theme-primary cursor-pointer">shadow</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      const results = searchData.filter(item => 
+        item.term.toLowerCase().includes(query) || 
+        item.category.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query)
+      );
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `
+          <div class="text-center text-theme-dark-80 py-12 px-4">
+            <div class="text-5xl mb-4">🤷</div>
+            <p>No results found for "${query}"</p>
+            <p class="text-sm mt-4">Try searching for: button, grid, animation, color, text</p>
+          </div>
+        `;
+        return;
+      }
+
+      // Group results by category
+      const grouped = {};
+      results.forEach(result => {
+        if (!grouped[result.category]) {
+          grouped[result.category] = [];
+        }
+        grouped[result.category].push(result);
+      });
+
+      let html = `<div class="text-theme-darkest mb-4"><strong>${results.length}</strong> result${results.length !== 1 ? 's' : ''} found</div>`;
+      
+      Object.keys(grouped).forEach(category => {
+        html += `
+          <div class="mb-6">
+            <h4 class="text-theme-darkest mb-3 text-base">${category}</h4>
+            <div class="flex flex-col gap-2">
+        `;
+        
+        grouped[category].forEach(item => {
+          html += `
+            <div class="glass-theme hover-lift cursor-pointer p-3 rounded-lg" onclick="navigateToSection('${item.section}', '${item.term}')">
+              <div class="flex justify-between items-start gap-4">
+                <div>
+                  <code class="text-theme-sage font-semibold">${item.term}</code>
+                  <p class="text-theme-dark-80 text-sm mt-1 m-0">${item.description}</p>
+                </div>
+                <span class="text-theme-sage text-xl">→</span>
+              </div>
+            </div>
+          `;
+        });
+        
+        html += `
+            </div>
+          </div>
+        `;
+      });
+
+      resultsContainer.innerHTML = html;
+    }
+
+    function navigateToSection(section, term) {
+      closeSearch();
+      const sectionElement = document.getElementById(section);
+      if (sectionElement) {
+        sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        showNotification(`Navigated to ${term}`);
+      }
+    }
+
+    function handleSearchKeydown(event) {
+      if (event.key === 'Escape') {
+        closeSearch();
+      }
+    }
+
+    // Keyboard shortcut for search (Ctrl/Cmd + K)
+    document.addEventListener('keydown', (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        event.preventDefault();
+        toggleSearch();
+      }
+      if (event.key === 'Escape' && !document.getElementById('searchModal').classList.contains('hidden')) {
+        closeSearch();
+      }
+    });
+
+    // Theme Switching
+    function switchTheme(theme) {
+      document.documentElement.setAttribute('data-color-theme', theme);
+      localStorage.setItem('solanke-color-theme', theme);
+      showNotification(`Switched to ${theme === 'luxury' ? 'Luxury Green 🌿' : 'Corporate Blue 💼'} theme`);
+    }
+
+    function toggleDark() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('solanke-dark-mode', isDark);
+      showNotification(`${isDark ? 'Dark 🌙' : 'Light ☀️'} mode enabled`);
+    }
+
+    // Copy CDN Link
+    function copyToClipboard() {
+      const cdnLink = 'https://cdn.jsdelivr.net/gh/YOUR-USERNAME/solanke-themes@v1.0.0/solanke-themes.css';
+      navigator.clipboard.writeText(cdnLink).then(() => {
+        showNotification('✅ CDN link copied to clipboard!');
+      }).catch(() => {
+        showNotification('❌ Failed to copy. Please copy manually.');
+      });
+    }
+
+    // Copy Code Block
+    function copyCode(button) {
+      const codeBlock = button.closest('.glass-theme').querySelector('code');
+      const text = codeBlock.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.textContent;
+        button.textContent = '✓ Copied!';
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 2000);
+      });
+    }
+
+    // Notification System
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification glass-theme';
+      notification.style.padding = '1rem 1.5rem';
+      notification.style.borderRadius = '0.75rem';
+      notification.innerHTML = `<p class="text-theme-darkest" style="margin: 0; font-weight: 600;">${message}</p>`;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.animation = 'slideInRight 0.3s ease-out reverse';
+        setTimeout(() => notification.remove(), 300);
+      }, 3000);
+    }
+
+    // Scroll Header Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Load Saved Preferences
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('solanke-color-theme') || 'luxury';
+      const isDark = localStorage.getItem('solanke-dark-mode') === 'true';
+      
+      document.documentElement.setAttribute('data-color-theme', savedTheme);
+      if (isDark) document.documentElement.classList.add('dark');
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ========================================
+    // AOS (Animate On Scroll) System
+    // ========================================
+    
+    const AOS = {
+      elements: [],
+      options: {
+        offset: 120,
+        delay: 0,
+        duration: 600,
+        easing: 'ease',
+        once: false,
+        mirror: false,
+        anchorPlacement: 'top-bottom'
+      },
+
+      init: function(settings = {}) {
+        this.options = { ...this.options, ...settings };
+        this.prepare();
+        this.refresh();
+        this.handleScroll();
+        
+        // Add scroll listener
+        window.addEventListener('scroll', () => this.handleScroll());
+        window.addEventListener('resize', () => this.refresh());
+        
+        // Watch for DOM changes
+        if (typeof MutationObserver !== 'undefined') {
+          const observer = new MutationObserver(() => this.refreshHard());
+          observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['data-aos']
+          });
+        }
+      },
+
+      prepare: function() {
+        const elements = document.querySelectorAll('[data-aos]');
+        elements.forEach(el => {
+          const animation = el.getAttribute('data-aos');
+          const offset = el.getAttribute('data-aos-offset') || this.options.offset;
+          const delay = el.getAttribute('data-aos-delay') || this.options.delay;
+          const duration = el.getAttribute('data-aos-duration') || this.options.duration;
+          const easing = el.getAttribute('data-aos-easing') || this.options.easing;
+          const once = el.hasAttribute('data-aos-once') ? el.getAttribute('data-aos-once') === 'true' : this.options.once;
+          const mirror = el.hasAttribute('data-aos-mirror') ? el.getAttribute('data-aos-mirror') === 'true' : this.options.mirror;
+          const anchorPlacement = el.getAttribute('data-aos-anchor-placement') || this.options.anchorPlacement;
+          const anchor = el.getAttribute('data-aos-anchor');
+          
+          this.elements.push({
+            node: el,
+            animation,
+            offset: parseInt(offset),
+            delay: parseInt(delay),
+            duration: parseInt(duration),
+            easing,
+            once,
+            mirror,
+            anchorPlacement,
+            anchor: anchor ? document.querySelector(anchor) : null,
+            triggered: false
+          });
+        });
+      },
+
+      refresh: function() {
+        this.elements.forEach(el => {
+          el.position = this.getPositionIn(el.node, el.anchorPlacement, el.anchor);
+        });
+        this.handleScroll();
+      },
+
+      refreshHard: function() {
+        this.elements = [];
+        this.prepare();
+        this.refresh();
+      },
+
+      getPositionIn: function(el, anchorPlacement, anchor) {
+        const targetEl = anchor || el;
+        const rect = targetEl.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        const positions = {
+          'top-bottom': rect.top,
+          'top-center': rect.top - windowHeight / 2,
+          'top-top': rect.top - windowHeight,
+          'center-bottom': rect.top + rect.height / 2,
+          'center-center': rect.top + rect.height / 2 - windowHeight / 2,
+          'center-top': rect.top + rect.height / 2 - windowHeight,
+          'bottom-bottom': rect.bottom,
+          'bottom-center': rect.bottom - windowHeight / 2,
+          'bottom-top': rect.bottom - windowHeight
+        };
+        
+        return positions[anchorPlacement] || positions['top-bottom'];
+      },
+
+      handleScroll: function() {
+        this.elements.forEach(el => {
+          const shouldAnimate = el.position < el.offset;
+          const isVisible = el.position < el.offset;
+          
+          if (shouldAnimate && !el.triggered) {
+            el.node.classList.add('aos-animate');
+            el.triggered = true;
+            
+            // Dispatch custom event
+            const event = new CustomEvent('aos:in', { detail: el });
+            document.dispatchEvent(event);
+            
+            // Dispatch event with ID if specified
+            const id = el.node.getAttribute('data-aos-id');
+            if (id) {
+              const idEvent = new CustomEvent(`aos:in:${id}`, { detail: el });
+              document.dispatchEvent(idEvent);
+            }
+            
+            if (el.once) {
+              // Remove from elements array if once is true
+              const index = this.elements.indexOf(el);
+              if (index > -1) this.elements.splice(index, 1);
+            }
+          } else if (!isVisible && el.mirror && el.triggered) {
+            el.node.classList.remove('aos-animate');
+            el.triggered = false;
+            
+            // Dispatch custom event
+            const event = new CustomEvent('aos:out', { detail: el });
+            document.dispatchEvent(event);
+            
+            // Dispatch event with ID if specified
+            const id = el.node.getAttribute('data-aos-id');
+            if (id) {
+              const idEvent = new CustomEvent(`aos:out:${id}`, { detail: el });
+              document.dispatchEvent(idEvent);
+            }
+          }
+        });
+      }
+    };
+
+    // Initialize AOS
+    AOS.init({
+      offset: 120,
+      delay: 0,
+      duration: 600,
+      easing: 'ease',
+      once: true,
+      mirror: false,
+      anchorPlacement: 'top-bottom'
+    });
+
+    // Optional: Log AOS events
+    document.addEventListener('aos:in', ({ detail }) => {
+      console.log('Element animated in:', detail);
+    });
+
+    document.addEventListener('aos:out', ({ detail }) => {
+      console.log('Element animated out:', detail);
+    });
+  </script>
+
+</body>
+</html>
+

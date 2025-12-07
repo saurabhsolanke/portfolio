@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import MacWindow from '../components/MacWindow';
+import MacWindow from '../MacWindow';
 
 export default function Photography() {
   const [photos, setPhotos] = useState([]);

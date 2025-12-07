@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-color-theme="luxury">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Using Solanke Themes in Another Project</title>
+  
+  <!-- Load your theme from CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YOUR-USERNAME/solanke-themes@v1.0.0/solanke-themes.css">
+  
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .header {
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .section {
+      margin: 4rem 0;
+    }
+  </style>
+</head>
+<body data-theme-enabled>
+
+  <!-- Navigation with Glass Effect -->
+  <nav class="header glass-theme">
+    <div class="nav-links">
+      <a href="#" class="btn-theme-secondary">Home</a>
+      <a href="#" class="btn-theme-secondary">About</a>
+      <a href="#" class="btn-theme-secondary">Projects</a>
+      <button onclick="switchTheme('luxury')" class="btn-theme-primary">🌿</button>
+      <button onclick="switchTheme('corporate')" class="btn-theme-accent">💼</button>
+      <button onclick="toggleDark()" class="btn-theme-secondary">🌙</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <section class="section">
+      <div class="glass-theme animate-fade-in" style="padding: 4rem 2rem; border-radius: 2rem; text-align: center;">
+        <span class="badge-theme-accent">New Project</span>
+        <h1 class="text-gradient-theme" style="font-size: 3rem; margin: 1rem 0;">
+          Your Project Name
+        </h1>
+        <p class="text-theme-dark" style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem;">
+          This is an example of using Solanke Themes in a completely different project. 
+          All the theme classes work seamlessly!
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <button class="btn-theme-primary">Get Started</button>
+          <button class="btn-theme-secondary">Learn More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+      <h2 class="text-gradient-theme" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
+        Key Features
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        
+        <div class="card-theme hover-lift">
+          <span class="badge-theme-primary">Fast</span>
+          <h3 class="text-theme-darkest" style="margin: 1rem 0;">⚡ Lightning Speed</h3>
+          <p class="text-theme-dark-80">
+            Optimized for performance with minimal CSS footprint.
+          </p>
+        </div>
+
+        <div class="card-theme hover-lift">
+          <span class="badge-theme-secondary">Easy</span>
+          <h3 class="text-theme-darkest" style="margin: 1rem 0;">🎨 Simple Integration</h3>
+          <p class="text-theme-dark-80">
+            Just add one CDN link and start using beautiful components.
+          </p>
+        </div>
+
+        <div class="card-theme hover-lift">
+          <span class="badge-theme-accent">Pro</span>
+          <h3 class="text-theme-darkest" style="margin: 1rem 0;">🌙 Dark Mode Ready</h3>
+          <p class="text-theme-dark-80">
+            Built-in dark mode support with smooth transitions.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="section">
+      <h2 class="text-gradient-theme" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
+        Component Showcase
+      </h2>
+      
+      <!-- Buttons -->
+      <div class="glass-theme" style="padding: 2rem; border-radius: 1rem; margin-bottom: 2rem;">
+        <h3 class="text-theme-darkest" style="margin-bottom: 1rem;">Buttons</h3>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn-theme-primary">Primary Action</button>
+          <button class="btn-theme-secondary">Secondary Action</button>
+          <button class="btn-theme-accent">Accent Action</button>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+        <div class="alert-theme-info">
+          <strong>ℹ️ Info:</strong> This is using the Solanke Themes library!
+        </div>
+        <div class="alert-theme-success">
+          <strong>✅ Success:</strong> All components are working perfectly!
+        </div>
+        <div class="alert-theme-warning">
+          <strong>⚠️ Note:</strong> You can customize colors for your brand.
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="glass-theme" style="padding: 2rem; border-radius: 1rem;">
+        <h3 class="text-theme-darkest" style="margin-bottom: 1rem;">Badges & Tags</h3>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="badge-theme-primary">React</span>
+          <span class="badge-theme-secondary">Next.js</span>
+          <span class="badge-theme-accent">TypeScript</span>
+          <span class="badge-theme-primary">Tailwind</span>
+          <span class="badge-theme-secondary">Node.js</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gradient Showcase -->
+    <section class="section">
+      <h2 class="text-gradient-theme" style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
+        Gradient Backgrounds
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        
+        <div class="gradient-theme-primary" style="padding: 3rem; border-radius: 1rem; text-align: center;">
+          <h4 class="text-theme-cream" style="margin: 0;">Primary</h4>
+        </div>
+
+        <div class="gradient-theme-secondary" style="padding: 3rem; border-radius: 1rem; text-align: center;">
+          <h4 class="text-theme-cream" style="margin: 0;">Secondary</h4>
+        </div>
+
+        <div class="gradient-theme-accent" style="padding: 3rem; border-radius: 1rem; text-align: center;">
+          <h4 class="text-theme-cream" style="margin: 0;">Accent</h4>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+      <div class="gradient-theme-primary" style="padding: 4rem 2rem; border-radius: 2rem; text-align: center;">
+        <h2 class="text-theme-cream" style="font-size: 2.5rem; margin-bottom: 1rem;">
+          Ready to Get Started?
+        </h2>
+        <p class="text-theme-cream" style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.95;">
+          Start using Solanke Themes in your projects today!
+        </p>
+        <button class="btn-theme-accent" style="font-size: 1.125rem; padding: 1rem 2rem;">
+          View Documentation →
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-theme" style="padding: 2rem; border-radius: 1rem; text-align: center; margin-top: 4rem;">
+      <p class="text-theme-darkest">
+        Built with <span class="text-theme-accent">♥</span> using <strong>Solanke Themes</strong>
+      </p>
+      <p class="text-theme-dark-80" style="font-size: 0.875rem; margin-top: 0.5rem;">
+        This entire page uses just one CSS file from CDN!
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Theme Switcher Script -->
+  <script>
+    // Theme switching functionality
+    function switchTheme(theme) {
+      document.documentElement.setAttribute('data-color-theme', theme);
+      localStorage.setItem('solanke-color-theme', theme);
+      showNotification(`Switched to ${theme === 'luxury' ? 'Luxury Green 🌿' : 'Corporate Blue 💼'}`);
+    }
+
+    function toggleDark() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('solanke-dark-mode', isDark);
+      showNotification(`${isDark ? 'Dark' : 'Light'} mode enabled`);
+    }
+
+    // Notification system
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'glass-theme';
+      notification.style.cssText = `
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 1rem 1.5rem;
+        border-radius: 0.75rem;
+        z-index: 9999;
+        animation: slideIn 0.3s ease-out;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      `;
+      notification.innerHTML = `<p class="text-theme-darkest" style="margin: 0; font-weight: 600;">${message}</p>`;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => notification.remove(), 300);
+      }, 2500);
+    }
+
+    // Load saved preferences
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('solanke-color-theme') || 'luxury';
+      const isDark = localStorage.getItem('solanke-dark-mode') === 'true';
+      
+      document.documentElement.setAttribute('data-color-theme', savedTheme);
+      if (isDark) document.documentElement.classList.add('dark');
+    });
+
+    // Add animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from { opacity: 0; transform: translateX(100%); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes slideOut {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(100%); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+</body>
+</html>
+

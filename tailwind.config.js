@@ -20,6 +20,20 @@ module.exports = {
         sans: ['SF Pro Display', 'system-ui', 'sans-serif'],
       },
       colors: {
+        'luxury': {
+          'darkest': 'var(--theme-darkest)',
+          'dark': 'var(--theme-dark)',
+          'sage': 'var(--theme-sage)',
+          'mint': 'var(--theme-mint)',
+          'cream': 'var(--theme-cream)',
+        },
+        'theme': {
+          'darkest': 'var(--theme-darkest)',
+          'dark': 'var(--theme-dark)',
+          'sage': 'var(--theme-sage)',
+          'mint': 'var(--theme-mint)',
+          'cream': 'var(--theme-cream)',
+        },
         'macos': {
           'blue': '#0071e3',
           'gray': '#86868b',

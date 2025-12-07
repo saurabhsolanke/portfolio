@@ -1,0 +1,42 @@
+{
+  "name": "solanke-themes",
+  "version": "1.0.0",
+  "description": "Beautiful, professional color themes with Luxury Green and Corporate Blue palettes. Perfect for portfolios, landing pages, and web applications.",
+  "main": "solanke-themes.css",
+  "style": "solanke-themes.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saurabhsolanke/solanke-themes.git"
+  },
+  "keywords": [
+    "css",
+    "themes",
+    "color-palette",
+    "design-system",
+    "ui",
+    "styles",
+    "glass-morphism",
+    "liquid-glass",
+    "portfolio",
+    "frontend",
+    "web-design",
+    "luxury-theme",
+    "corporate-theme",
+    "dark-mode"
+  ],
+  "author": {
+    "name": "Saurabh Solanke",
+    "url": "https://github.com/saurabhsolanke"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saurabhsolanke/solanke-themes/issues"
+  },
+  "homepage": "https://github.com/saurabhsolanke/solanke-themes#readme",
+  "files": [
+    "solanke-themes.css",
+    "README-THEME-LIBRARY.md",
+    "demo.html"
+  ]
+}
+

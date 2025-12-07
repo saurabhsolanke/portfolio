@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-color-theme="luxury">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solanke Themes - Demo</title>
+  <link rel="stylesheet" href="solanke-themes.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .demo-box {
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .control-panel {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+    }
+
+    .control-btn {
+      margin: 0.25rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    h1, h2, h3 { margin-bottom: 1rem; }
+    p { margin-bottom: 1rem; }
+  </style>
+</head>
+<body data-theme-enabled>
+
+  <!-- Control Panel -->
+  <div class="control-panel glass-theme" style="padding: 1rem; border-radius: 1rem;">
+    <h4 style="margin-bottom: 0.75rem; text-align: center;" class="text-theme-darkest">Theme Controls</h4>
+    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <button onclick="switchTheme('luxury')" class="control-btn bg-theme-sage text-theme-cream">
+        🌿 Luxury Green
+      </button>
+      <button onclick="switchTheme('corporate')" class="control-btn bg-theme-darkest text-theme-cream">
+        💼 Corporate Blue
+      </button>
+      <button onclick="toggleDark()" class="control-btn bg-theme-accent text-white">
+        🌙 Toggle Dark
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Hero Section -->
+    <section class="section">
+      <div class="glass-theme animate-fade-in" style="padding: 4rem 2rem; border-radius: 2rem; text-align: center;">
+        <h1 class="text-gradient-theme" style="font-size: 3.5rem; margin-bottom: 1rem;">
+          Solanke Themes
+        </h1>
+        <p class="text-theme-dark" style="font-size: 1.5rem; margin-bottom: 2rem;">
+          Beautiful, professional color themes for modern web projects
+        </p>
+        <div class="button-group" style="justify-content: center;">
+          <button class="btn-theme-primary">Get Started</button>
+          <button class="btn-theme-secondary">View on GitHub</button>
+          <button class="btn-theme-accent">Documentation</button>
+        </div>
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <span class="badge-theme-primary">v1.0.0</span>
+          <span class="badge-theme-secondary">MIT License</span>
+          <span class="badge-theme-accent">Production Ready</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Palette -->
+    <section class="section">
+      <h2 class="section-title text-gradient-theme">Color Palette</h2>
+      <div class="grid">
+        <div class="demo-box bg-theme-darkest text-theme-cream shadow-theme-lg">
+          <h3>Darkest</h3>
+          <p>Primary dark color</p>
+        </div>
+        <div class="demo-box bg-theme-dark text-theme-cream shadow-theme-lg">
+          <h3>Dark</h3>
+          <p>Secondary dark color</p>
+        </div>
+        <div class="demo-box bg-theme-sage text-theme-cream shadow-theme-lg">
+          <h3>Sage</h3>
+          <p>Medium accent</p>
+        </div>
+        <div class="demo-box bg-theme-mint text-theme-darkest shadow-theme-lg">
+          <h3>Mint</h3>
+          <p>Light accent</p>
+        </div>
+        <div class="demo-box bg-theme-cream text-theme-darkest shadow-theme-lg">
+          <h3>Cream</h3>
+          <p>Background color</p>
+        </div>
+        <div class="demo-box bg-theme-accent text-white shadow-theme-lg">
+          <h3>Accent</h3>
+          <p>Highlight color</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="section">
+      <h2 class="section-title text-gradient-theme">Card Components</h2>
+      <div class="grid">
+        <div class="card-theme hover-lift animate-fade-in">
+          <span class="badge-theme-primary">Featured</span>
+          <h3 class="text-theme-darkest" style="margin-top: 1rem;">Glass Card</h3>
+          <p class="text-theme-dark-80">Beautiful glass morphism effect with hover animation.</p>
+          <button class="btn-theme-primary" style="margin-top: 1rem;">Learn More</button>
+        </div>
+        
+        <div class="card-theme hover-lift animate-fade-in" style="animation-delay: 0.1s;">
+          <span class="badge-theme-accent">New</span>
+          <h3 class="text-theme-darkest" style="margin-top: 1rem;">Responsive Design</h3>
+          <p class="text-theme-dark-80">Mobile-first approach with modern CSS techniques.</p>
+          <button class="btn-theme-secondary" style="margin-top: 1rem;">Explore</button>
+        </div>
+
+        <div class="card-theme hover-lift animate-fade-in" style="animation-delay: 0.2s;">
+          <span class="badge-theme-secondary">Pro</span>
+          <h3 class="text-theme-darkest" style="margin-top: 1rem;">Easy Integration</h3>
+          <p class="text-theme-dark-80">Simple CDN link or npm package installation.</p>
+          <button class="btn-theme-accent" style="margin-top: 1rem;">Get Started</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="section">
+      <h2 class="section-title text-gradient-theme">Button Styles</h2>
+      <div class="glass-theme" style="padding: 2rem; border-radius: 1rem;">
+        <h3 class="text-theme-darkest" style="margin-bottom: 1.5rem;">All Button Variants</h3>
+        <div class="button-group">
+          <button class="btn-theme-primary">Primary Button</button>
+          <button class="btn-theme-secondary">Secondary Button</button>
+          <button class="btn-theme-accent">Accent Button</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alerts -->
+    <section class="section">
+      <h2 class="section-title text-gradient-theme">Alert Components</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <div class="alert-theme-info">
+          <strong>Info:</strong> This is an informational alert message.
+        </div>
+        <div class="alert-theme-success">
+          <strong>Success:</strong> Your operation completed successfully!
+        </div>
+        <div class="alert-theme-warning">
+          <strong>Warning:</strong> Please review before proceeding.
+        </div>
+      </div>
+    </section>
+
+    <!-- Gradients -->
+    <section class="section">
+      <h2 class="section-title text-gradient-theme">Gradient Backgrounds</h2>
+      <div class="grid">
+        <div class="gradient-theme-primary" style="padding: 3rem; border-radius: 1rem; text-align: center;">
+          <h3 class="text-theme-cream">Primary Gradient</h3>
+          <p class="text-theme-cream" style="opacity: 0.9;">Full spectrum gradient</p>
+        </div>
+        <div class="gradient-theme-secondary" style="padding: 3rem; border-radius: 1rem; text-align: center;">
+          <h3 class="text-theme-cream">Secondary Gradient</h3>
+          <p class="text-theme-cream" style="opacity: 0.9;">Subtle two-tone gradient</p>
+        </div>
+        <div class="gradient-theme-accent" style="padding: 3rem; border-radius: 1rem; text-align: center;">
+          <h3 class="text-theme-cream">Accent Gradient</h3>
+          <p class="text-theme-cream" style="opacity: 0.9;">Eye-catching accent</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shadows -->
+    <section class="section">
+      <h2 class="section-title text-gradient-theme">Shadow Utilities</h2>
+      <div class="grid">
+        <div class="bg-theme-cream shadow-theme-sm" style="padding: 2rem; border-radius: 1rem; text-align: center;">
+          <h4 class="text-theme-darkest">Small Shadow</h4>
+        </div>
+        <div class="bg-theme-cream shadow-theme-md" style="padding: 2rem; border-radius: 1rem; text-align: center;">
+          <h4 class="text-theme-darkest">Medium Shadow</h4>
+        </div>
+        <div class="bg-theme-cream shadow-theme-lg" style="padding: 2rem; border-radius: 1rem; text-align: center;">
+          <h4 class="text-theme-darkest">Large Shadow</h4>
+        </div>
+        <div class="bg-theme-cream shadow-theme-xl" style="padding: 2rem; border-radius: 1rem; text-align: center;">
+          <h4 class="text-theme-darkest">XL Shadow</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-theme" style="padding: 2rem; border-radius: 1rem; text-align: center; margin-top: 4rem;">
+      <p class="text-theme-darkest">
+        Made with <span class="text-theme-accent">♥</span> by <strong>Saurabh Solanke</strong>
+      </p>
+      <p class="text-theme-dark-80" style="font-size: 0.875rem; margin-top: 0.5rem;">
+        © 2024 Solanke Themes. MIT License.
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    function switchTheme(theme) {
+      document.documentElement.setAttribute('data-color-theme', theme);
+      localStorage.setItem('solanke-color-theme', theme);
+      
+      // Visual feedback
+      showNotification(`Switched to ${theme === 'luxury' ? 'Luxury Green' : 'Corporate Blue'} theme`);
+    }
+
+    function toggleDark() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('solanke-dark-mode', isDark);
+      
+      // Visual feedback
+      showNotification(`${isDark ? 'Dark' : 'Light'} mode enabled`);
+    }
+
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'glass-theme';
+      notification.style.cssText = `
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 1rem 2rem;
+        border-radius: 0.75rem;
+        z-index: 9999;
+        animation: fadeIn 0.3s ease-out;
+      `;
+      notification.innerHTML = `<p class="text-theme-darkest" style="margin: 0; font-weight: 600;">${message}</p>`;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.animation = 'fadeOut 0.3s ease-out';
+        setTimeout(() => notification.remove(), 300);
+      }, 2000);
+    }
+
+    // Load saved preferences
+    const savedTheme = localStorage.getItem('solanke-color-theme') || 'luxury';
+    const isDark = localStorage.getItem('solanke-dark-mode') === 'true';
+    
+    document.documentElement.setAttribute('data-color-theme', savedTheme);
+    if (isDark) document.documentElement.classList.add('dark');
+
+    // Add fadeOut animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeOut {
+        from { opacity: 1; transform: translateX(-50%) translateY(0); }
+        to { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+</body>
+</html>
+

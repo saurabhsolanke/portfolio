@@ -1,19 +1,161 @@
 {
-  "posts": [
+  "blogs": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "How to Install and Use AOS",
+      "description": "AOS (Animate On Scroll) is a lightweight JavaScript library that makes it easy to add smooth, attractive scroll-based animations to your website. In this guide, I'll walk you through the steps to install and set up AOS in an Angular 15 project, along with troubleshooting tips to resolve common issues.",
+      "image": "/images/aos.png",
+      "readUrl": "https://medium.com/p/76b0da09dab1",
+      "date": "Nov 18, 2024",
+      "readTime": "5 min read",
+      "platform": "Medium"
+    },
+    {
+      "id": 2,
+      "title": "SpendTracker: The Personal Finance App That Puts Your Privacy (and Wallet) First",
+      "description": "Let’s be honest: Managing money is stressful. Managing it with an app that treats your financial data as a product is even worse. We built SpendTracker because we needed a powerful, simple, and uncompromisingly private way to handle our finances.",
+      "image": "/images/spendtracker.png",
+      "readUrl": "https://medium.com/@saurabh.solanke_6285/spendtracker-the-personal-finance-app-that-puts-your-privacy-and-wallet-first-748d9e4e3e4d",
+      "date": "Nov 19, 2025",
+      "readTime": "3 min read",
+      "platform": "Medium"
     }
   ],
-  "comments": [
+  "techstacks": {
+    "Frontend": [
+      {
+        "id": 1,
+        "name": "React",
+        "icon": "/images/react-svgrepo-com.svg",
+        "level": 90
+      },
+      {
+        "id": 2,
+        "name": "Next.js",
+        "icon": "/images/nextjs.svg",
+        "level": 85
+      },
+      {
+        "id": 3,
+        "name": "TypeScript",
+        "icon": "/images/typescript.svg",
+        "level": 80
+      },
+      {
+        "id": 4,
+        "name": "Angular",
+        "icon": "/images/Angular1.svg",
+        "level": 95
+      },
+      {
+        "id": 5,
+        "name": "Svelte",
+        "icon": "/images/svelte.svg",
+        "level": 85
+      },
+      {
+        "id": 6,
+        "name": "Vue.js",
+        "icon": "/images/vue.svg",
+        "level": 80
+      },
+      {
+        "id": 7,
+        "name": "Nuxt.js",
+        "icon": "/images/nuxtjs.svg",
+        "level": 75
+      }
+    ],
+    "Backend": [
+      {
+        "id": 5,
+        "name": "Node.js",
+        "icon": "/images/Node.js.svg",
+        "level": 85
+      },
+      {
+        "id": 6,
+        "name": "Express",
+        "icon": "/images/Express.svg",
+        "level": 80
+      },
+      {
+        "id": 7,
+        "name": "MongoDB",
+        "icon": "/images/MongoDB.svg",
+        "level": 75
+      },
+      {
+        "id": 8,
+        "name": "PostgreSQL",
+        "icon": "/images/PostgresSQL.svg",
+        "level": 70
+      }
+    ],
+    "Tools & Others": [
+      {
+        "id": 9,
+        "name": "Git",
+        "icon": "/images/git.svg",
+        "level": 90
+      },
+      {
+        "id": 10,
+        "name": "Vercel",
+        "icon": "/images/Vercel.svg",
+        "level": 75
+      },
+      {
+        "id": 11,
+        "name": "Heroku",
+        "icon": "/images/Heroku.svg",
+        "level": 70
+      },
+      {
+        "id": 12,
+        "name": "Firebase",
+        "icon": "/images/Firebase.svg",
+        "level": 80
+      }
+    ]
+  },
+  "projects": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "Daily Planner",
+      "description": "A brief description of a Smarter Way to Organize Your Tasks & Notes",
+      "image": "/images/dailyplanner.png",
+      "liveUrl": "https://fe25calendar.vercel.app/home",
+      "githubUrl": "https://github.com/saurabhsolanke/Calendar_25",
+      "tags": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "E-commerce",
+      "description": "Ecommerce boiler plate code to save you time",
+      "image": "/images/ellipses.png",
+      "liveUrl": "https://lively-puffpuff-905287.netlify.app/register",
+      "githubUrl": "https://github.com/saurabhsolanke/twopage-e-commerce",
+      "tags": [
+        "Next.js",
+        "JavaScript",
+        "Tailwind"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "SpendTracker",
+      "description": "A brief description of a Smarter Way to Organize Your Tasks & Notes",
+      "image": "/images/spendtracker.png",
+      "liveUrl": "https://spendtracker.vercel.app/",
+      "githubUrl": "https://github.com/saurabhsolanke/spendtracker",
+      "tags": [
+        "Swift UI"
+      ]
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
