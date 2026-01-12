@@ -175,7 +175,7 @@ export default function Footer() {
                         className="mb-8"
                     >
                         <h3 className="text-2xl font-bold mb-2 text-black dark:text-white">
-                            Let's Connect
+                            Let&apos;s Connect
                         </h3>
                         <p className="text-gray-600 dark:text-gray-400">
                             Feel free to reach out for collaborations or just a friendly chat
