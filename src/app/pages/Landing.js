@@ -113,7 +113,7 @@ export default function Landing() {
               <div className="relative group">
                 <div className="absolute inset-0 bg-white/80 dark:bg-black/60 backdrop-blur-xl rounded-3xl border border-gray-200 dark:border-gray-800 shadow-xl" />
                 <p className="relative text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed p-8">
-                  Software Engineer with 3+ years of experience, specializing in <span className="font-semibold text-black dark:text-white">JavaScript</span>, <span className="font-semibold text-black dark:text-white">TypeScript</span>, <span className="font-semibold text-black dark:text-white">Angular</span>, <span className="font-semibold text-black dark:text-white">Vue</span>, and <span className="font-semibold text-black dark:text-white">React</span>. Passionate about building responsive web applications with exceptional user experiences.
+                  Software Engineer with 4+ years of experience, specializing in <span className="font-semibold text-black dark:text-white">JavaScript</span>, <span className="font-semibold text-black dark:text-white">TypeScript</span>, <span className="font-semibold text-black dark:text-white">Angular</span>, <span className="font-semibold text-black dark:text-white">Vue</span>, and <span className="font-semibold text-black dark:text-white">React</span>. Passionate about building responsive web applications with exceptional user experiences.
                 </p>
               </div>
             </motion.div>
