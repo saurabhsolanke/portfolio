@@ -175,7 +175,7 @@ export default function Techstacks() {
                                                 return (
                                                     <div
                                                         key={number}
-                                                        className="group relative overflow-visible"
+                                                        className="group relative overflow-visible hover:z-50 active:z-50"
                                                         data-aos="flip-up"
                                                         data-aos-delay={(rowIndex * 3 + keyIndex) * 100}
                                                     >
@@ -273,7 +273,7 @@ export default function Techstacks() {
                                             return (
                                                 <div
                                                     key={key}
-                                                    className="group relative overflow-visible"
+                                                    className="group relative overflow-visible hover:z-50"
                                                     data-aos="zoom-in"
                                                     data-aos-delay={(rowIndex * 10 + keyIndex) * 50}
                                                 >

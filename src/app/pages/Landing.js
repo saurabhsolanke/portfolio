@@ -171,7 +171,7 @@ const SocialLink = ({ href, icon, label }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="group relative"
+    className="group relative hover:z-50"
     whileHover={{ y: -5 }}
     whileTap={{ scale: 0.95 }}
   >

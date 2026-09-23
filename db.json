@@ -121,40 +121,45 @@
   },
   "projects": [
     {
-      "id": 1,
-      "title": "Daily Planner",
-      "description": "A brief description of a Smarter Way to Organize Your Tasks & Notes",
-      "image": "/images/dailyplanner.png",
-      "liveUrl": "https://fe25calendar.vercel.app/home",
-      "githubUrl": "https://github.com/saurabhsolanke/Calendar_25",
+      "id": 4,
+      "title": "TEDxPune Website",
+      "description": "Official web platform for TEDxPune event featuring speaker lineups, schedule tracking, interactive agendas, and ticket registration.",
+      "image": "/images/tedxpune.jpg",
+      "liveUrl": "#",
+      "githubUrl": "#",
+      "tags": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "UI/UX"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Dadar Mobile App",
+      "description": "Smart urban navigation and community portal mobile app for Dadar, offering real-time local transit routes, market directory, and community updates.",
+      "image": "/images/dadar_app.jpg",
+      "liveUrl": "#",
+      "githubUrl": "#",
+      "tags": [
+        "React Native",
+        "iOS",
+        "Android",
+        "UI/UX"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Fullstack Medical Application",
+      "description": "Fullstack healthcare platform featuring clinical workflow analytics, patient scheduling, and privacy-compliant data management.",
+      "image": "/images/medical_app.jpg",
+      "liveUrl": "#",
+      "githubUrl": "#",
       "tags": [
         "React",
         "Node.js",
-        "MongoDB"
-      ]
-    },
-    {
-      "id": 2,
-      "title": "E-commerce",
-      "description": "Ecommerce boiler plate code to save you time",
-      "image": "/images/ellipses.png",
-      "liveUrl": "https://lively-puffpuff-905287.netlify.app/register",
-      "githubUrl": "https://github.com/saurabhsolanke/twopage-e-commerce",
-      "tags": [
-        "Next.js",
-        "JavaScript",
-        "Tailwind"
-      ]
-    },
-    {
-      "id": 3,
-      "title": "SpendTracker",
-      "description": "A brief description of a Smarter Way to Organize Your Tasks & Notes",
-      "image": "/images/spendtracker.png",
-      "liveUrl": "https://spendtracker.vercel.app/",
-      "githubUrl": "https://github.com/saurabhsolanke/spendtracker",
-      "tags": [
-        "Swift UI"
+        "Fullstack",
+        "Healthcare"
       ]
     }
   ]

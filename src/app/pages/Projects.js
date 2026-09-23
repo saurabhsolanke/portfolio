@@ -168,23 +168,38 @@ export default function Projects() {
 
                                         {/* Action Buttons */}
                                         <div className="flex gap-4">
-                                            <Link
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                className="flex-1 group/btn relative overflow-hidden rounded-xl"
-                                            >
-                                                <div className="absolute inset-0 bg-black dark:bg-white transition-transform duration-300 group-hover/btn:scale-105" />
-                                                <div className="relative px-6 py-3 text-center text-white dark:text-black font-semibold">
-                                                    View Live →
+                                            {project.liveUrl && project.liveUrl !== '#' ? (
+                                                <Link
+                                                    href={project.liveUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex-1 group/btn relative overflow-hidden rounded-xl"
+                                                >
+                                                    <div className="absolute inset-0 bg-black dark:bg-white transition-transform duration-300 group-hover/btn:scale-105" />
+                                                    <div className="relative px-6 py-3 text-center text-white dark:text-black font-semibold text-sm">
+                                                        View Live →
+                                                    </div>
+                                                </Link>
+                                            ) : (
+                                                <div className="flex-1 relative rounded-xl bg-gray-100/60 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center justify-center">
+                                                    Client Project
                                                 </div>
-                                            </Link>
-                                            <Link
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                className="flex-1 relative rounded-xl bg-gray-100 dark:bg-gray-800 backdrop-blur-sm border border-gray-200 dark:border-gray-700 px-6 py-3 text-center font-semibold text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
-                                            >
-                                                View Code
-                                            </Link>
+                                            )}
+
+                                            {project.githubUrl && project.githubUrl !== '#' ? (
+                                                <Link
+                                                    href={project.githubUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex-1 relative rounded-xl bg-gray-100 dark:bg-gray-800 backdrop-blur-sm border border-gray-200 dark:border-gray-700 px-6 py-3 text-center font-semibold text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center"
+                                                >
+                                                    View Code
+                                                </Link>
+                                            ) : (
+                                                <div className="flex-1 relative rounded-xl bg-gray-100/60 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center justify-center">
+                                                    Protected Code (NDA)
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 

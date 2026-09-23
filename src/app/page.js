@@ -60,12 +60,12 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="experience" className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
+          {/* <section id="experience" className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-50/40 to-pink-50/30 dark:via-indigo-950/30 dark:to-pink-950/20" />
             <div className="relative">
               <Experience />
             </div>
-          </section>
+          </section> */}
 
           <section id="blogs" className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 pb-32 relative">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/40 to-cyan-50/30 dark:via-purple-950/30 dark:to-cyan-950/20" />

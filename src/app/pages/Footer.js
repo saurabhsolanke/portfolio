@@ -195,7 +195,7 @@ export default function Footer() {
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group relative"
+                                className="group relative hover:z-50"
                                 whileHover={{ y: -3 }}
                                 whileTap={{ scale: 0.95 }}
                             >
