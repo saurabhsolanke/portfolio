@@ -125,7 +125,7 @@
       "title": "TEDxPune Website",
       "description": "Official web platform for TEDxPune event featuring speaker lineups, schedule tracking, interactive agendas, and ticket registration.",
       "image": "/images/tedxpune.jpg",
-      "liveUrl": "#",
+      "liveUrl": "https://www.tedxpune.com",
       "githubUrl": "#",
       "tags": [
         "Next.js",

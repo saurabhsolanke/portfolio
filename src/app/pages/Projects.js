@@ -1,222 +1,205 @@
-import React, { useEffect, useState, useRef } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+'use client';
+import React, { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
-import { CardSkeleton } from '../components/Skeleton';
 import Image from 'next/image';
 import Link from 'next/link';
+import { HiOutlineExternalLink, HiOutlineCode } from 'react-icons/hi';
+import { CardSkeleton } from '../components/Skeleton';
 
 export default function Projects() {
-    const [projects, setProjects] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const scrollContainerRef = useRef(null);
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
-    const [canScrollRight, setCanScrollRight] = useState(false);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedTag, setSelectedTag] = useState("All");
 
-    useEffect(() => {
-        fetchProjects();
-    }, []);
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
-    useEffect(() => {
-        if (projects.length > 0) {
-            AOS.init({
-                duration: 1000,
-                once: true,
-            });
-            checkScrollButtons();
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch('/api/projects');
+      if (response.ok) {
+        const data = await response.json();
+        setProjects(data);
+      } else {
+        throw new Error('Failed to fetch');
+      }
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+      setProjects([
+        {
+          id: 4,
+          title: "TEDxPune Official Platform",
+          description: "High-traffic web platform for TEDxPune featuring dynamic speaker lineups, interactive schedules, and secure attendee ticket registration.",
+          image: "/images/tedxpune.jpg",
+          liveUrl: "https://www.tedxpune.com",
+          githubUrl: "#",
+          tags: ["Next.js", "React", "Tailwind CSS", "UI/UX"]
+        },
+        {
+          id: 5,
+          title: "Dadar Urban Mobile App",
+          description: "Community navigation and local services mobile application for Dadar, offering real-time transit routes, directory, and local updates.",
+          image: "/images/dadar_app.jpg",
+          liveUrl: "#",
+          githubUrl: "#",
+          tags: ["React Native", "iOS", "Android", "UI/UX"]
+        },
+        {
+          id: 6,
+          title: "Fullstack Healthcare Application",
+          description: "Clinical workflow analytics and patient scheduling suite featuring HIPAA-compliant data storage and responsive clinical dashboards.",
+          image: "/images/medical_app.jpg",
+          liveUrl: "#",
+          githubUrl: "#",
+          tags: ["React", "Node.js", "Fullstack", "Healthcare"]
         }
-    }, [projects]);
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const fetchProjects = async () => {
-        try {
-            const response = await fetch('/api/projects');
-            const data = await response.json();
-            setProjects(data);
-        } catch (error) {
-            console.error('Error fetching projects:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
+  const allTags = ["All", ...Array.from(new Set(projects.flatMap(p => p.tags || [])))];
 
-    const checkScrollButtons = () => {
-        if (scrollContainerRef.current) {
-            const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-            setCanScrollLeft(scrollLeft > 0);
-            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-        }
-    };
+  const filteredProjects = selectedTag === "All"
+    ? projects
+    : projects.filter(p => p.tags && p.tags.includes(selectedTag));
 
-    const scroll = (direction) => {
-        if (scrollContainerRef.current) {
-            const scrollAmount = scrollContainerRef.current.clientWidth * 0.8;
-            const newScrollLeft = direction === 'left'
-                ? scrollContainerRef.current.scrollLeft - scrollAmount
-                : scrollContainerRef.current.scrollLeft + scrollAmount;
-
-            scrollContainerRef.current.scrollTo({
-                left: newScrollLeft,
-                behavior: 'smooth'
-            });
-        }
-    };
-
-
-
-    return (
-        <div className="py-20 max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-                <h2 className="text-5xl md:text-6xl font-bold mb-4 text-black dark:text-white">
-                    Featured Projects
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    Crafting digital experiences with modern technologies
-                </p>
-            </div>
-
-            {/* Carousel Container */}
-            <div className="relative px-4">
-                {/* Left Arrow */}
-                {canScrollLeft && (
-                    <button
-                        onClick={() => scroll('left')}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
-                        aria-label="Scroll left"
-                    >
-                        <svg className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
-                )}
-
-                {/* Right Arrow */}
-                {canScrollRight && (
-                    <button
-                        onClick={() => scroll('right')}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/90 dark:bg-black/90 backdrop-blur-sm border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
-                        aria-label="Scroll right"
-                    >
-                        <svg className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                )}
-
-                {/* Scrollable Container */}
-                <div
-                    ref={scrollContainerRef}
-                    onScroll={checkScrollButtons}
-                    className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4"
-                    style={{
-                        scrollbarWidth: 'none',
-                        msOverflowStyle: 'none',
-                    }}
-                >
-                    {loading ? (
-                        // Skeleton Loading State
-                        [...Array(3)].map((_, index) => (
-                            <CardSkeleton key={index} />
-                        ))
-                    ) : projects.length === 0 ? (
-                        <div className="w-full text-center py-12">
-                            <p className="text-gray-600 dark:text-gray-400">No projects available yet.</p>
-                        </div>
-                    ) : (
-                        projects.map((project, index) => (
-                            <motion.div
-                                key={project.id}
-                                className="group relative flex-none w-[85vw] sm:w-[70vw] md:w-[45vw] lg:w-[40vw] snap-start"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                whileHover={{ y: -10 }}
-                            >
-                                {/* Glass Container */}
-                                <div className="relative bg-white/80 dark:bg-black/60 backdrop-blur-xl rounded-3xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 h-full">
-                                    {/* Project Image */}
-                                    <div className="relative h-64 w-full overflow-hidden">
-                                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/60 dark:to-black/60 z-10" />
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                        />
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className="p-8">
-                                        <h3 className="text-2xl md:text-3xl font-bold mb-3 text-black dark:text-white">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                                            {project.description}
-                                        </p>
-
-                                        {/* Tags */}
-                                        <div className="flex flex-wrap gap-2 mb-6">
-                                            {project.tags.map((tag, tagIndex) => (
-                                                <span
-                                                    key={tagIndex}
-                                                    className="px-4 py-1.5 text-sm font-medium bg-gray-100 dark:bg-gray-800 backdrop-blur-sm rounded-full border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
-                                                >
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-
-                                        {/* Action Buttons */}
-                                        <div className="flex gap-4">
-                                            {project.liveUrl && project.liveUrl !== '#' ? (
-                                                <Link
-                                                    href={project.liveUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="flex-1 group/btn relative overflow-hidden rounded-xl"
-                                                >
-                                                    <div className="absolute inset-0 bg-black dark:bg-white transition-transform duration-300 group-hover/btn:scale-105" />
-                                                    <div className="relative px-6 py-3 text-center text-white dark:text-black font-semibold text-sm">
-                                                        View Live →
-                                                    </div>
-                                                </Link>
-                                            ) : (
-                                                <div className="flex-1 relative rounded-xl bg-gray-100/60 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center justify-center">
-                                                    Client Project
-                                                </div>
-                                            )}
-
-                                            {project.githubUrl && project.githubUrl !== '#' ? (
-                                                <Link
-                                                    href={project.githubUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="flex-1 relative rounded-xl bg-gray-100 dark:bg-gray-800 backdrop-blur-sm border border-gray-200 dark:border-gray-700 px-6 py-3 text-center font-semibold text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center"
-                                                >
-                                                    View Code
-                                                </Link>
-                                            ) : (
-                                                <div className="flex-1 relative rounded-xl bg-gray-100/60 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700 px-4 py-3 text-center text-xs font-medium text-gray-500 dark:text-gray-400 flex items-center justify-center">
-                                                    Protected Code (NDA)
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    {/* Hover Glow Effect */}
-                                    <div className="absolute inset-0 bg-gray-100 dark:bg-gray-900 opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none" />
-                                </div>
-                            </motion.div>
-                        ))
-                    )}
-                </div>
-            </div>
-
-            <style jsx>{`
-                .hide-scrollbar::-webkit-scrollbar {
-                    display: none;
-                }
-            `}</style>
+  return (
+    <section id="work" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
+        <div>
+          <span className="text-xs font-mono tracking-widest text-zinc-500 uppercase">WORK</span>
+          <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-white mt-2">
+            Selected projects
+          </h2>
         </div>
-    );
+        <p className="text-sm font-mono text-zinc-400">
+          Client platforms, production apps &amp; experiments.
+        </p>
+      </div>
+
+      {/* Filter Tabs */}
+      <div className="flex flex-wrap gap-2 mb-10">
+        {allTags.map((tag) => (
+          <button
+            key={tag}
+            onClick={() => setSelectedTag(tag)}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-mono transition-all ${
+              selectedTag === tag
+                ? "bg-zinc-800 text-white border border-zinc-700 shadow-sm"
+                : "bg-zinc-900/60 text-zinc-400 hover:text-white border border-zinc-800/80 hover:border-zinc-700"
+            }`}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {loading ? (
+          [...Array(3)].map((_, i) => (
+            <CardSkeleton key={i} />
+          ))
+        ) : filteredProjects.length === 0 ? (
+          <div className="col-span-full text-center py-12 text-zinc-500 font-mono text-xs">
+            No projects in this category.
+          </div>
+        ) : (
+          filteredProjects.map((project, index) => (
+            <motion.article
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="group flex flex-col rounded-3xl bg-zinc-900/60 border border-zinc-800/90 overflow-hidden hover:border-zinc-700/80 transition-all duration-300 hover:-translate-y-1 shadow-sm"
+            >
+              {/* Image Banner */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+
+                {project.liveUrl && project.liveUrl !== '#' && (
+                  <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono bg-zinc-950/80 backdrop-blur-md text-emerald-400 border border-zinc-800 shadow-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    LIVE
+                  </span>
+                )}
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight text-white mb-2 group-hover:text-amber-200/90 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-zinc-400 leading-relaxed font-normal">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-5 font-mono text-xs">
+                    {project.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-1 rounded-md bg-zinc-800/60 text-zinc-400 border border-zinc-700/40 text-[11px]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Actions */}
+                  <div className="flex items-center gap-3 pt-4 border-t border-zinc-800/80 font-mono text-xs">
+                    {project.liveUrl && project.liveUrl !== '#' ? (
+                      <Link
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl font-medium bg-white text-zinc-950 hover:bg-zinc-200 transition-all duration-200"
+                      >
+                        <span>Live site</span>
+                        <HiOutlineExternalLink className="w-3.5 h-3.5" />
+                      </Link>
+                    ) : (
+                      <div className="flex-1 py-2 px-4 rounded-xl text-center text-zinc-500 bg-zinc-800/30 border border-zinc-800/60">
+                        Client Platform
+                      </div>
+                    )}
+
+                    {project.githubUrl && project.githubUrl !== '#' ? (
+                      <Link
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 py-2 px-4 rounded-xl text-zinc-300 bg-zinc-800 hover:bg-zinc-700 transition-colors"
+                      >
+                        <HiOutlineCode className="w-3.5 h-3.5" />
+                        <span>Code</span>
+                      </Link>
+                    ) : (
+                      <span className="text-zinc-600 px-2 select-none text-[11px]">
+                        {"// NDA"}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))
+        )}
+      </div>
+    </section>
+  );
 }

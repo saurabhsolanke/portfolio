@@ -1,82 +1,96 @@
 'use client';
-import Navbar from "./pages/Navbar";
-import Landing from "./pages/Landing";
-import Techstacks from "./pages/Techstacks";
-import Projects from "./pages/Projects";
-import Footer from "./pages/Footer";
-import React, { useState, useEffect } from "react";
-import Blogs from "./pages/Blogs";
-import Experience from "./pages/Experience";
-
-import LineArtBackground from "./components/LineArtBackground";
-import AnimatedBackground from "./components/AnimatedBackground";
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Experience from './components/Experience';
+import Skills from './components/Skills';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 export default function Home() {
   const [theme, setTheme] = useState('light');
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
+  const [mounted, setMounted] = useState(false);
 
-    if (savedTheme === 'dark') {
+  useEffect(() => {
+    // Check saved theme or system preference
+    const savedTheme = localStorage.getItem('apple_theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark');
       document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
     }
+    setMounted(true);
+
+    // Scroll-triggered fade-in animation (IntersectionObserver)
+    const elements = document.querySelectorAll('.apple-fade');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: '0px 0px -32px 0px',
+      }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+      observer.disconnect();
+    };
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    if (newTheme === 'dark') {
+    const nextTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+    localStorage.setItem('apple_theme', nextTheme);
+    if (nextTheme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-    localStorage.setItem('theme', newTheme);
   };
 
   return (
-    <div className={`${theme}`}>
-      <main className="flex flex-col min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-purple-50/20 dark:from-black dark:via-blue-950/20 dark:to-purple-950/10 transition-colors duration-300 relative overflow-hidden">
-        <LineArtBackground />
-        <AnimatedBackground />
-        <div className="relative z-10">
-          <Navbar toggleTheme={toggleTheme} theme={theme} />
-          <section id="about" className="min-h-screen bg-gradient-to-b from-transparent via-blue-50/40 to-purple-50/30 dark:via-blue-950/30 dark:to-purple-950/20 pt-16">
-            <Landing />
-          </section>
+    <div className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-ink)] transition-colors duration-300 antialiased">
+      {/* 1. NAVBAR */}
+      <Navbar theme={theme} toggleTheme={toggleTheme} mounted={mounted} />
 
-          <section id="techstack" className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/40 to-purple-50/30 dark:via-blue-950/30 dark:to-purple-950/20" />
-            <div className="relative">
-              <Techstacks />
-            </div>
-          </section>
+      <main>
+        {/* 2. HERO */}
+        <Hero />
 
-          <section id="projects" className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-50/40 to-pink-50/30 dark:via-indigo-950/30 dark:to-pink-950/20" />
-            <div className="relative">
-              <Projects />
-            </div>
-          </section>
+        {/* 3. PROJECTS / WORK GRID */}
+        <Projects />
 
-          {/* <section id="experience" className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-50/40 to-pink-50/30 dark:via-indigo-950/30 dark:to-pink-950/20" />
-            <div className="relative">
-              <Experience />
-            </div>
-          </section> */}
+        {/* 4. TECH STACK (ABOUT) */}
+        <About />
 
-          <section id="blogs" className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 pb-32 relative">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-50/40 to-cyan-50/30 dark:via-purple-950/30 dark:to-cyan-950/20" />
-            <div className="relative">
-              <Blogs />
-            </div>
-          </section>
+        {/* 5. EXPERIENCE */}
+        <Experience />
 
-          <Footer />
-        </div>
+        {/* 6. SKILLS / SERVICES (DARK SECTION) */}
+        <Skills />
+
+        {/* 6. CONTACT / CTA */}
+        <Contact />
       </main>
+
+      {/* 7. FOOTER */}
+      <Footer />
     </div>
   );
 }

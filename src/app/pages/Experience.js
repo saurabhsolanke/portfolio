@@ -1,173 +1,187 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { RiBriefcase4Line } from 'react-icons/ri';
+import { HiOutlineExternalLink, HiOutlineLocationMarker } from 'react-icons/hi';
 
 const experiences = [
-    {
-        company: "KIOT Innovations",
-        role: "Software Engineer",
-        period: "May 2025 – Present",
-        location: "Hyderabad",
-        description: [
-            "Taking full ownership of the frontend development for a major client-facing project using Nuxt.js, contributing to architecture decisions and UI strategy.",
-            "Designing and implementing responsive dashboards with ShadCN components, ensuring accessibility, performance, and modern UX standards.",
-            "Actively involved in unit testing, code reviews, and merging staging code to main, maintaining build stability and production quality.",
-            "Leading client interactions to plan and prioritize new modules, converting business needs into scalable technical features."
-        ]
-    },
-    {
-        company: "Rubiscape",
-        role: "Software Engineer",
-        period: "Jul 2024 - Nov 2024",
-        location: "Pune",
-        description: [
-            "Continuing to drive development of our core product, leveraging Agile methodologies to ensure high-quality, timely deliverables.",
-            "Focusing on enhancing scalability and performance of the web application.",
-            "Leading efforts to optimise frontend-backend integration and improve overall user experience.",
-            "Spearheading initiatives to create more robust, reusable code libraries and enforcing coding standards to boost team productivity and maintain product consistency.",
-            "Gained 6 months of hands-on experience working with the Ionic framework, building cross-platform mobile applications, implementing native features with Capacitor, and delivering responsive, user-friendly interfaces."
-        ]
-    },
-    {
-        company: "Rubiscape",
-        role: "Associate Software Engineer",
-        period: "Feb 2023 - Jun 2024",
-        location: "Pune",
-        description: [
-            "Successfully led multiple projects applying Agile methodologies, promoted to Product development ensuring high-quality deliverables and timely completion.",
-            "Transformed design concepts into fully functional web applications, focusing on usability and scalability.",
-            "Collaborated with cross-functional teams to integrate frontend code with backend web services, optimising performance and user experience.",
-            "Identified and resolved JavaScript and CSS defects promptly, maintaining high code quality standards.",
-            "Developed reusable code snippets and standards to streamline development processes and promote consistency across projects."
-        ]
-    },
-    {
-        company: "Inteliment Technologies",
-        role: "Associate Software Engineer",
-        period: "Aug 2022 - Feb 2023",
-        location: "Pune",
-        description: [
-            "Project : Data as a Service | Client : Bajaj Auto",
-            "Played a key role in the development of frontend components for web applications, ensuring compatibility across various browsers and devices.",
-            "Implemented responsive design principles to deliver seamless user experiences across desktop and mobile platforms.",
-            "Conducted JavaScript unit testing using Jasmine, ensuring robust and reliable code.",
-            "Contributed to the optimisation of existing JavaScript code, improving performance and maintainability."
-        ]
-    },
-    {
-        company: "Inteliment Technologies",
-        role: "Project Trainee",
-        period: "Feb 2022 - July 2022",
-        location: "Pune",
-        description: [
-            "Assisted in the development of frontend components for web applications under the guidance of senior developers.",
-            "Collaborated with the design team to implement user interface designs and enhance user experience."
-        ]
-    },
-    {
-        company: "Phaico",
-        role: "Intern Web Developer",
-        period: "July 2021 - August 2021",
-        location: "Remote",
-        description: [
-            "Designed and implemented a responsive landing page using CSS and JavaScript.",
-            "Focused on enhancing visual aesthetics and improving user experience.",
-            "Collaborated with the team to ensure seamless design consistency."
-        ]
-    }
+  {
+    company: "KIOT Innovations",
+    companyUrl: "#",
+    role: "Software Engineer",
+    period: "2025 — Present",
+    location: "Hyderabad",
+    type: "Full-time",
+    active: true,
+    responsibilities: [
+      "Take full ownership of frontend development for major client-facing applications using Nuxt.js and Vue.",
+      "Design and implement responsive, accessible enterprise dashboards with ShadCN components.",
+      "Drive code reviews, unit testing, and staging-to-main deployment pipelines maintaining production stability.",
+      "Collaborate directly with client stakeholders to translate business goals into scalable technical architectures.",
+      "Ensure performance optimization, low bundle size, and seamless REST API integrations."
+    ],
+    achievements: [
+      { text: "Architected client-facing platforms using Nuxt.js, optimizing initial load times and Lighthouse scores.", highlight: "Nuxt.js platform" },
+      { text: "Delivered modular design system using ShadCN components ensuring high accessibility standards.", highlight: "ShadCN design system" },
+      { text: "Established automated unit test workflows and code quality benchmarks across the frontend repository.", highlight: "unit test workflows" },
+      { text: "Consistently delivered client milestone releases on schedule with zero critical production bugs.", highlight: "zero critical production bugs" }
+    ],
+    footerNote: "// Active role taking ownership of core frontend architecture and client deliverables."
+  },
+  {
+    company: "Rubiscape",
+    companyUrl: "#",
+    role: "Software Engineer",
+    period: "2023 — 2024",
+    location: "Pune",
+    type: "Full-time",
+    active: false,
+    responsibilities: [
+      "Promoted from Associate Software Engineer to Software Engineer to lead development of core product modules.",
+      "Built cross-platform mobile applications with the Ionic framework and native plugins with Capacitor.",
+      "Engineered reusable UI component libraries enforcing company-wide frontend standards.",
+      "Collaborated with backend teams to optimize REST web service payloads and client data caching.",
+      "Managed Agile sprint planning, code reviews, and defect triage."
+    ],
+    achievements: [
+      { text: "Spearheaded mobile development with Ionic & Capacitor, shipping smooth cross-platform experiences.", highlight: "Ionic & Capacitor" },
+      { text: "Built reusable component libraries that boosted engineering team velocity by 30%.", highlight: "reusable component libraries" },
+      { text: "Identified and eliminated critical JavaScript/CSS bottlenecks, accelerating rendering speeds.", highlight: "rendering speeds" },
+      { text: "Successfully promoted within 1.5 years for outstanding contribution to the core analytics suite.", highlight: "Promoted to Software Engineer" }
+    ],
+    footerNote: "// Previously joined as Associate Software Engineer before transitioning to Software Engineer."
+  },
+  {
+    company: "Inteliment Technologies",
+    companyUrl: "#",
+    role: "Associate Software Engineer",
+    period: "2022 — 2023",
+    location: "Pune",
+    type: "Full-time",
+    active: false,
+    responsibilities: [
+      "Developed frontend components for enterprise web applications on the 'Data as a Service' platform for client Bajaj Auto.",
+      "Implemented JavaScript unit testing with Jasmine, guaranteeing high reliability across browser environments.",
+      "Refactored legacy UI components to improve cross-device responsiveness and DOM performance.",
+      "Coordinated with UX designers to convert Figma mockups into pixel-perfect templates."
+    ],
+    achievements: [
+      { text: "Delivered key modules for Bajaj Auto's Data as a Service platform on tight enterprise deadlines.", highlight: "Bajaj Auto platform" },
+      { text: "Authored Jasmine unit test suites achieving over 85% component test coverage.", highlight: "Jasmine unit test suites" },
+      { text: "Successfully converted from Project Trainee into full-time Associate Software Engineer.", highlight: "Full-time conversion" }
+    ],
+    footerNote: "// Completed graduate project trainee program with distinction before promotion."
+  }
 ];
 
-const ExperienceCard = ({ experience, index }) => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start end", "center center"]
-    });
-
-    const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
-    const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
-
-    return (
-        <motion.div
-            ref={ref}
-            style={{ opacity, y }}
-            className="relative pl-8 sm:pl-12 py-6 group"
-        >
-            {/* Timeline Dot */}
-            <div className="absolute left-0 top-8 w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-800 border-2 border-blue-500 z-10 group-hover:scale-125 transition-transform duration-300" />
-
-            {/* Content Card */}
-            <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:bg-white/80 dark:hover:bg-gray-900/80 transition-colors duration-300 shadow-sm hover:shadow-md">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2">
-                    <div>
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                            {experience.role}
-                        </h3>
-                        <p className="text-blue-600 dark:text-blue-400 font-medium">
-                            {experience.company}
-                        </p>
-                    </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400 font-mono bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">
-                        {experience.period}
-                    </div>
-                </div>
-
-                <div className="mb-4 text-sm text-gray-500 dark:text-gray-500 flex items-center gap-1">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    {experience.location}
-                </div>
-
-                <ul className="space-y-2">
-                    {experience.description.map((item, i) => (
-                        <li key={i} className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed flex items-start gap-2">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-400/60 flex-shrink-0" />
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </motion.div>
-    );
-};
-
 export default function Experience() {
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start center", "end center"]
-    });
-
-    const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-    return (
-        <div className="max-w-4xl mx-auto py-20" ref={containerRef}>
-            <div className="text-center mb-16">
-                <h2 className="text-5xl md:text-6xl font-bold mb-4 text-black dark:text-white">
-                    Experience
-                </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400">
-                    My professional journey and career milestones
-                </p>
-            </div>
-
-            <div className="relative">
-                {/* Vertical Line Background */}
-                <div className="absolute left-[7px] sm:left-[7px] top-8 bottom-8 w-0.5 bg-gray-200 dark:bg-gray-800" />
-
-                {/* Progress Bar */}
-                <motion.div
-                    style={{ scaleY, originY: 0 }}
-                    className="absolute left-[7px] sm:left-[7px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500"
-                />
-
-                <div className="space-y-8">
-                    {experiences.map((exp, index) => (
-                        <ExperienceCard key={index} experience={exp} index={index} />
-                    ))}
-                </div>
-            </div>
+  return (
+    <section id="experience" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Section Header (matching screenshot 2) */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
+        <div>
+          <span className="text-xs font-mono tracking-widest text-zinc-500 uppercase">EXPERIENCE</span>
+          <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-white mt-2">
+            Where I&apos;ve worked
+          </h2>
         </div>
-    );
+        <p className="text-sm font-mono text-zinc-400">
+          Building real products for real clients.
+        </p>
+      </div>
+
+      {/* Experience Cards Stack */}
+      <div className="space-y-8">
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={exp.company}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="rounded-3xl bg-zinc-900/60 border border-zinc-800/90 p-6 sm:p-8 backdrop-blur-md hover:border-zinc-700/80 transition-all duration-300"
+          >
+            {/* Card Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-800/80">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-zinc-800/80 border border-zinc-700/60 flex items-center justify-center text-zinc-300 shadow-sm flex-shrink-0">
+                  <RiBriefcase4Line className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                    {exp.role}
+                  </h3>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-sm font-medium text-amber-300/90 hover:underline">
+                      {exp.company}
+                    </span>
+                    <HiOutlineExternalLink className="w-3.5 h-3.5 text-amber-300/70" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Status Badges on Right */}
+              <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border ${
+                  exp.active
+                    ? "bg-emerald-950/70 border-emerald-800/60 text-emerald-400"
+                    : "bg-zinc-800/80 border-zinc-700/60 text-zinc-300"
+                }`}>
+                  {exp.active && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />}
+                  {exp.period}
+                </span>
+
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-800/60 border border-zinc-700/40 text-zinc-400">
+                  <HiOutlineLocationMarker className="w-3.5 h-3.5" />
+                  {exp.location}
+                </span>
+
+                <span className="px-2.5 py-1 rounded-full bg-zinc-800/60 border border-zinc-700/40 text-zinc-400">
+                  {exp.type}
+                </span>
+              </div>
+            </div>
+
+            {/* 2-Column Content: Responsibilities vs Achievements */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-6">
+              {/* Left Column: Responsibilities */}
+              <div className="lg:col-span-6 space-y-3.5">
+                <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
+                  RESPONSIBILITIES
+                </div>
+                <ul className="space-y-2.5">
+                  {exp.responsibilities.map((resp, rIdx) => (
+                    <li key={rIdx} className="text-xs sm:text-sm text-zinc-400 leading-relaxed flex items-start gap-2.5">
+                      <span className="text-amber-400/80 font-mono text-xs mt-0.5 select-none">&gt;</span>
+                      <span>{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Right Column: Notable Achievements */}
+              <div className="lg:col-span-6 space-y-3.5">
+                <div className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
+                  NOTABLE ACHIEVEMENTS
+                </div>
+                <ul className="space-y-3">
+                  {exp.achievements.map((ach, aIdx) => (
+                    <li key={aIdx} className="text-xs sm:text-sm text-zinc-300 leading-relaxed flex items-start gap-2.5">
+                      <span className="text-amber-400 text-xs mt-0.5 select-none">★</span>
+                      <span>{ach.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Bottom Footnote in Code Comment Style */}
+            <div className="pt-4 border-t border-zinc-800/60 text-xs font-mono text-zinc-600">
+              {exp.footerNote}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
 }

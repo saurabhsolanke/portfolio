@@ -1,54 +1,20 @@
+'use client';
 import React from 'react';
 
 const LineArtBackground = () => {
-    return (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            <style jsx>{`
-                @keyframes lineShift1 {
-                    0%, 100% { transform: translateX(0) translateY(0); }
-                    50% { transform: translateX(20px) translateY(-20px); }
-                }
-                @keyframes lineShift2 {
-                    0%, 100% { transform: translateX(0) translateY(0); }
-                    50% { transform: translateX(-20px) translateY(20px); }
-                }
-                @keyframes pulse {
-                    0%, 100% { opacity: 0.2; }
-                    50% { opacity: 0.3; }
-                }
-                @keyframes pulseDark {
-                    0%, 100% { opacity: 0.1; }
-                    50% { opacity: 0.15; }
-                }
-            `}</style>
-            <div
-                className="absolute inset-0 opacity-20 dark:opacity-10"
-                style={{
-                    backgroundImage: `repeating-linear-gradient(
-                        -45deg,
-                        transparent,
-                        transparent 1rem,
-                        rgba(128, 128, 128, 0.3) 1rem,
-                        rgba(128, 128, 128, 0.3) calc(1rem + 1px)
-                    )`,
-                    animation: 'lineShift1 20s ease-in-out infinite, pulse 8s ease-in-out infinite'
-                }}
-            />
-            <div
-                className="absolute inset-0 opacity-20 dark:opacity-10"
-                style={{
-                    backgroundImage: `repeating-linear-gradient(
-                        45deg,
-                        transparent,
-                        transparent 1rem,
-                        rgba(128, 128, 128, 0.3) 1rem,
-                        rgba(128, 128, 128, 0.3) calc(1rem + 1px)
-                    )`,
-                    animation: 'lineShift2 20s ease-in-out infinite, pulse 8s ease-in-out infinite 4s'
-                }}
-            />
-        </div>
-    );
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* Subtle Dot Grid with Radial Mask */}
+      <div 
+        className="absolute inset-0 dot-grid [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)] opacity-70 dark:opacity-40" 
+      />
+
+      {/* Ambient Top Glow */}
+      <div 
+        className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-blue-100/40 via-purple-100/20 to-transparent dark:from-blue-950/20 dark:via-purple-950/10 dark:to-transparent rounded-full blur-3xl pointer-events-none"
+      />
+    </div>
+  );
 };
 
 export default LineArtBackground;
