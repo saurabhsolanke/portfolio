@@ -4,7 +4,7 @@ export const personalInfo = {
   name: "Saurabh Solanke",
   title: "Hello, I'm Saurabh Solanke",
   subtitle: "AI Software Engineer with 4+ Years Experience in Javascript, Typescript and AI",
-  email: "saurabh.solanke98@gmail.com",
+  email: "saurabh.solanke@gmail.com",
   metaTitle: "Saurabh Solanke — AI Software Engineer",
   metaDescription: "AI Software Engineer with 4+ Years Experience in Javascript, Typescript and AI.",
   aboutEyebrow: "TECH STACK",
