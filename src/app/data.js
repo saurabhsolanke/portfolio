@@ -253,5 +253,5 @@ export const footerLinks = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/saurabh-solanke/" },
   { name: "Medium", href: "https://medium.com/@saurabh.solanke_6285" },
   { name: "Stack Overflow", href: "https://stackoverflow.com/users/11864453/saurabh-solanke" },
-  { name: "Email", href: "mailto:saurabh.solanke98@gmail.com" },
+  { name: "Email", href: "mailto:saurabh.solanke@gmail.com" },
 ];

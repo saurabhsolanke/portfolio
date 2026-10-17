@@ -6,7 +6,7 @@ import { HiOutlineMail, HiOutlineClipboardCheck, HiOutlineClipboard, HiOutlineAr
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
-  const email = "saurabh.solanke98@gmail.com";
+  const email = "saurabh.solanke@gmail.com";
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -46,7 +46,7 @@ export default function Footer() {
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-mono font-medium tracking-wide bg-white text-zinc-950 hover:bg-zinc-200 transition-all duration-200 shadow-sm hover:scale-[1.02] active:scale-95"
               >
                 <HiOutlineMail className="w-4 h-4" />
-                <span>saurabh.solanke98@gmail.com</span>
+                <span>saurabh.solanke@gmail.com</span>
               </a>
 
               <button

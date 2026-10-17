@@ -77,7 +77,7 @@ export default {
             className="flex flex-wrap items-center gap-3 pt-2"
           >
             <a
-              href="mailto:saurabh.solanke98@gmail.com"
+              href="mailto:saurabh.solanke@gmail.com"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wide bg-white text-zinc-950 hover:bg-zinc-200 transition-all duration-200 shadow-md hover:scale-[1.02] active:scale-95"
             >
               <HiOutlineExternalLink className="w-4 h-4" />

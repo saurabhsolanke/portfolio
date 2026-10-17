@@ -91,7 +91,7 @@ const Navbar = ({ toggleTheme, theme = 'dark' }) => {
           </button>
 
           <a
-            href="mailto:saurabh.solanke98@gmail.com"
+            href="mailto:saurabh.solanke@gmail.com"
             className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium text-white bg-zinc-900 border border-zinc-700/80 hover:bg-zinc-800 hover:border-zinc-600 transition-all shadow-sm"
           >
             <span>Hire me</span>
@@ -134,7 +134,7 @@ const Navbar = ({ toggleTheme, theme = 'dark' }) => {
             ))}
             <div className="pt-2">
               <a
-                href="mailto:saurabh.solanke98@gmail.com"
+                href="mailto:saurabh.solanke@gmail.com"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-2 w-full py-2 rounded-full text-xs font-medium text-white bg-zinc-800 border border-zinc-700"
               >
